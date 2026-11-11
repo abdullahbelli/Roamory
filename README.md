@@ -1,17 +1,23 @@
-# roamory
+# Roamory — Antigravity Geliştirme Dokümanları
 
-A new Flutter project.
+Bu paket mevcut Flutter `roamory/` klasörünün köküne açılır. Flutter kaynak kodu içermez; ürün, tasarım, güvenlik, mimari ve görev talimatları içerir.
 
-## Getting Started
+## Kullanım
+1. ZIP dosyasını aç, içindeki dosyaları mevcut Flutter projesinin köküne kopyala (`AGENTS.md`, `project.md`, ... ve `docs/`).
+2. Antigravity'de `roamory/` çalışma alanını açık tut; Stitch MCP bağlantısının çalıştığını doğrula.
+3. `ANTIGRAVITY_MASTER_PROMPT.md` içindeki promptu agent'a **bir kez** gönder.
+4. Agent önce belgeleri ve mevcut proje/şemayı inceler; sonra `tasks.md` görevlerine göre geliştirmeye başlar. Büyük işlerin tek oturumda biteceği garanti edilmez; görev durumu dosyada tutulur.
+5. Supabase publishable key güvenli local config ile sağlanır, secret verilmez.
 
-This project is a starting point for a Flutter application.
+## Önemli
+Görüşmedeki Supabase SQL işlemleri proje üzerinde daha önce çalıştırılmıştır. Agent onları körlemesine yeniden çalıştırmamalıdır. `docs/screen_inventory.md` gerçek Stitch MCP ekran ID'lerini içerir.
 
-A few resources to get you started if this is your first Flutter project:
+## Kod içi yorum zorunluluğu
+Tüm önemli Dart sınıf/metotları Türkçe `///` DartDoc ve gerekli satır içi `//` yorumlarıyla açıklanacaktır. Bu kural `AGENTS.md`, `architecture.md`, `testing.md` ve ana promptta tekrarlanır.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## İki bilgisayarda çalışma (Ev / Ofis)
+- `YAPILANLAR.md` ve `DEVIR_NOTLARI.md` dosyaları da proje kökünde olmalıdır. Bunlar Git üzerinden her iki cihazda eşitlenir.
+- Bir oturumun BAŞINDA devir notlarını ve Git durumunu oku; SONUNDA işlem günlüğünü ve devir notlarını güncelle.
+- Antigravity'nin yerel Stitch MCP konfigürasyonu bilgisayara özeldir; ofiste ayrıca yapılandırıp bağlantıyı doğrula. API key'i Git'e ekleme.
+- Gerçek kaynak kod senkronizasyonu `git push`/`git pull` aracılığıyladır; Markdown yalnızca işlem ve bağlam devridir.
