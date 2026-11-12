@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Roamory marka ana rengi (#176B5B) ile uyumlu adaptif ikon arka planı -->
+    <color name="ic_launcher_background">#176B5B</color>
+</resources>
+

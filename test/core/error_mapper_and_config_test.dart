@@ -208,7 +208,7 @@ void main() {
       // Amaç: RLS ihlali (42501), tablo GRANT eksikliği (permission denied for table)
       // ve 401/403 Auth hataları doğru alt kodlarla UnauthorizedAppException olmalı.
       'Postgrest RLS, tablo GRANT eksikliği ve Auth 401/403 hataları yetkisiz erişim hatasına eşlenir',
-      () {
+      () async {
         final rlsError = PostgrestException(
           message:
               'new row violates row-level security policy for table "visits"',
@@ -250,10 +250,17 @@ void main() {
         expect(mappedChecklistCheck.code, equals('checklist_invalid_category'));
 
         // Kanonik checklist kategori normalizasyonu ve sort_order okuma doğrulaması.
-        expect(TripChecklistCategory.isValid('general'), isTrue);
+        expect(TripChecklistCategory.isValid('other'), isTrue);
+        expect(TripChecklistCategory.isValid('documents'), isTrue);
+        expect(TripChecklistCategory.isValid('packing'), isTrue);
+        expect(TripChecklistCategory.isValid('bookings'), isTrue);
+        expect(TripChecklistCategory.isValid('general'), isFalse);
+        expect(TripChecklistCategory.isValid('docs'), isFalse);
         expect(TripChecklistCategory.isValid('Genel Hazırlık'), isFalse);
-        expect(TripChecklistCategory.normalize('documents'), 'docs');
-        expect(TripChecklistCategory.normalize('equip'), 'gear');
+        expect(TripChecklistCategory.normalize('docs'), 'documents');
+        expect(TripChecklistCategory.normalize('gear'), 'packing');
+        expect(TripChecklistCategory.normalize('hotel'), 'bookings');
+        expect(TripChecklistCategory.normalize('general'), 'other');
         final mappedChecklist = SupabaseTripsRepository.mapChecklistRow({
           'id': 'chk-10',
           'trip_id': 't1',
@@ -262,8 +269,20 @@ void main() {
           'is_completed': true,
           'sort_order': 3,
         });
-        expect(mappedChecklist.category, 'docs');
+        expect(mappedChecklist.category, 'documents');
         expect(mappedChecklist.sortOrder, 3);
+        await expectLater(
+          () => SupabaseTripsRepository(
+            null,
+          ).updateChecklistItem(itemId: 'chk-10', category: 'Genel Hazırlık'),
+          throwsA(
+            isA<ValidationAppException>().having(
+              (e) => e.code,
+              'code',
+              'checklist_invalid_category',
+            ),
+          ),
+        );
       },
     );
   });

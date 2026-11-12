@@ -11,8 +11,9 @@ import 'package:roamory/shared/widgets/roamory_scaffold.dart';
 /// Roamory Seyahat Kontrol Listesi Ekranı (`D05` — Stitch `98ee3f26a6d24afbbacbfa1eaf77a2e9`).
 ///
 /// Seyahate ait `trip_checklist_items` maddelerini ilerleme çubuğu, durum filtresi
-/// (`Tümü`, `Eksikler`, `Tamamlananlar`), kategori seçimi (`docs`, `gear`, `hotel`,
-/// `general`), tamamlama işaretlemesi ve silme aksiyonlarıyla yönetir.
+/// (`Tümü`, `Eksikler`, `Tamamlananlar`), canlı CHECK kısıtıyla uyumlu kategori
+/// seçimi (`documents`, `packing`, `bookings`, `other`), tamamlama işaretlemesi
+/// ve silme aksiyonlarıyla yönetir.
 class TripChecklistScreen extends ConsumerStatefulWidget {
   /// Seyahat kontrol listesi ekranı oluşturur.
   const TripChecklistScreen({super.key, required this.tripId});
@@ -27,16 +28,16 @@ class TripChecklistScreen extends ConsumerStatefulWidget {
 
 class _TripChecklistScreenState extends ConsumerState<TripChecklistScreen> {
   final TextEditingController _itemController = TextEditingController();
-  String _selectedCategory = TripChecklistCategory.general;
+  String _selectedCategory = TripChecklistCategory.other;
   String _statusFilter = 'all';
 
-  /// Veritabanı kategori kodunu (`general`, `docs`, `gear`, `hotel`) yalnızca
-  /// arayüzde gösterilmek üzere yerelleştirilmiş etikete dönüştürür.
+  /// Veritabanı kategori kodunu (`documents`, `packing`, `bookings`, `other`)
+  /// yalnızca arayüzde gösterilmek üzere TR/EN ARB etiketine dönüştürür.
   String _localizedCategoryLabel(AppLocalizations l10n, String categoryCode) {
     return switch (TripChecklistCategory.normalize(categoryCode)) {
-      TripChecklistCategory.docs => l10n.checklistCategoryDocs,
-      TripChecklistCategory.gear => l10n.checklistCategoryGear,
-      TripChecklistCategory.hotel => l10n.checklistCategoryHotel,
+      TripChecklistCategory.documents => l10n.checklistCategoryDocs,
+      TripChecklistCategory.packing => l10n.checklistCategoryGear,
+      TripChecklistCategory.bookings => l10n.checklistCategoryHotel,
       _ => l10n.checklistCategoryGeneral,
     };
   }
@@ -203,19 +204,19 @@ class _TripChecklistScreenState extends ConsumerState<TripChecklistScreen> {
                   value: _selectedCategory,
                   items: [
                     DropdownMenuItem(
-                      value: TripChecklistCategory.general,
+                      value: TripChecklistCategory.other,
                       child: Text(l10n.checklistCategoryGeneral),
                     ),
                     DropdownMenuItem(
-                      value: TripChecklistCategory.docs,
+                      value: TripChecklistCategory.documents,
                       child: Text(l10n.checklistCategoryDocs),
                     ),
                     DropdownMenuItem(
-                      value: TripChecklistCategory.gear,
+                      value: TripChecklistCategory.packing,
                       child: Text(l10n.checklistCategoryGear),
                     ),
                     DropdownMenuItem(
-                      value: TripChecklistCategory.hotel,
+                      value: TripChecklistCategory.bookings,
                       child: Text(l10n.checklistCategoryHotel),
                     ),
                   ],

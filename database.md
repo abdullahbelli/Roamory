@@ -17,9 +17,9 @@
 | Keşif | `categories`, `places` | category slug/name_tr/name_en; place coords + country/city; is_published; `created_by` sonradan eklendi; `authenticated` için `INSERT` yetkisi canlı DB'de verildi; sadece owner private veya published gösterimi |
 | Ziyaret | `visits`, `visit_photos`, `visit_categories` | user_id, place_id, visited_at, rating, visibility; photo storage_path; etiket ilişkisi; **visibility=public başkalarına otomatik görünür yapmaz** |
 | Wishlist | `wishlist_items` | unique `(user_id, place_id)`; `"Add to own wishlist"` ve `"Update own wishlist"` politikaları owner özel mekanını destekler (canlı emülatörde 6/6 doğrulandı) |
-| Seyahat | `trips`, `trip_days`, `trip_stops`, `trip_checklist_items` | owner, tarih, status; day_date trip tarihleriyle uyumlu; stop place_id (`"Manage own trip stops"` owner özel mekanını destekleyecek şekilde güncellendi); checklist categories |
-| Sosyal | `posts`, `post_photos`, `post_likes`, `comments`, `follows`, `saved_posts` | draft/published; paylaşımlar günlükten bağımsız; engelleme politikaları güncellendi |
-| Güvenlik | `notifications`, `user_blocks`, `content_reports` | bildirimler client INSERT değildir; engellemede takip temizleme trigger'ı; moderation server-only olmalı |
+| Seyahat | `trips`, `trip_days`, `trip_stops`, `trip_checklist_items` | owner, tarih, status; day_date trip tarihleriyle uyumlu; stop place_id (`"Manage own trip stops"` owner özel mekanını destekleyecek şekilde güncellendi); `trip_checklist_items_category_check` canlı CHECK kısıtı değiştirilmeyecek (Flutter tarafı canlı izin verilen değerlerle hizalanmayı bekliyor) |
+| Sosyal | `posts`, `post_photos`, `post_likes`, `comments`, `follows`, `saved_posts` | draft/published; paylaşımlar günlükten bağımsız; engelleme politikaları güncellendi; `follows`/`post_likes`/`comments` üzerinde `AFTER INSERT` bildirim trigger'ları canlı DB'de aktif |
+| Güvenlik | `notifications`, `user_blocks`, `content_reports` | `notifications` istemci `INSERT`/`DELETE` kaldırıldı; `authenticated` yalnız `SELECT` + `UPDATE (is_read)` yetkili; `"View own notifications"` & `"Mark own notifications as read"` RLS korundu ve `private.create_social_notification` trigger'ları canlıda uygulandı; engellemede takip temizleme trigger'ı; moderation server-only |
 
 ## Storage
 - `avatars`: public, 5 MB, JPEG/PNG/WebP; `userUUID/file` path.
@@ -38,7 +38,8 @@
 2. `trips` şeması ortak gezi üyeliği/davet, rezervasyon, harcama alanlarını içermiyor; Stitch'teki bu öğeler mevcut özellik olarak gösterilemez.
 3. `posts` sadece draft/published; Stitch'teki takipçilere özel paylaşım için `visibility` ve buna bağlı RLS yok. UI gösteriyorsa onaylı migration veya sadeleştirme yapılmalı.
 4. `profiles` için tüm `authenticated` kullanıcılarına `SELECT` grant'i mevcut; block kuralı var; hassas veri barındırma. `avatar_url` private olmamalı.
-5. `notifications` tabloda okunabilir fakat bildirim üreten otomatik güvenli trigger'lar tamamlanmadı.
+5. `notifications` canlı SQL güncellemeleri Supabase SQL Editor üzerinden uygulandı (`supabase/migrations/20260412000002_notifications_triggers_proposal.sql` içinde belgelendi): mevcut `"View own notifications"` ve `"Mark own notifications as read"` RLS politikaları korundu; `authenticated` için `SELECT` ve yalnızca `is_read` kolonunda `UPDATE` izni verildi; istemci `INSERT`/`DELETE` yetkileri kaldırıldı; `private.create_social_notification` ortak trigger fonksiyonu ve `follows`, `post_likes`, `comments` `AFTER INSERT` trigger'ları devreye alındı (Flutter 2 hesaplı canlı cihaz testi bekliyor).
+6. `trip_checklist_items.category` üzerindeki canlı `trip_checklist_items_category_check` CHECK kısıtı korunacaktır (değiştirilmeyecek). Mevcut Flutter `TripChecklistCategory` (`general`, `docs`, `gear`, `hotel`) kodlarıyla uyuşmazlık tespit edilmiştir; canlı izin verilen değerler `pg_constraint` üzerinden alınıp Flutter tarafına eşlenmeyi beklemektedir (`supabase/migrations/20260412000003_trips_and_checklist_proposal.sql`).
 6. Sosyal photo policy `posts` okumasına ve block kontrolüne bağımlı; eski imzalı linkler süresi bitene kadar açık kalabilir. Storage policy'lerini gerçek iki ayrı token ile doğrula.
 7. `updated_at` alanlarını güncelleyen genel trigger doğrulanmadı; yazma davranışını test et.
 8. Harita araması için `PostGIS` henüz etkinleştirildiği doğrulanmadı; basit lat/lon kullanılabilir, yakınlık sorgusu gerekiyorsa migration planla.

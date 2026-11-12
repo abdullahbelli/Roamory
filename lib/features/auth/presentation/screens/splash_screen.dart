@@ -78,10 +78,19 @@ class SplashScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Icon(
-                      Icons.explore_rounded,
-                      size: 52,
-                      color: colors.primary,
+                    // Marka logosu assets/images/roamory_logo.png olarak sunulur;
+                    // yükleme hatasında zarif pusula ikonuna düşer.
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(26),
+                      child: Image.asset(
+                        'assets/images/roamory_logo.png',
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, _, _) => Icon(
+                          Icons.explore_rounded,
+                          size: 52,
+                          color: colors.primary,
+                        ),
+                      ),
                     ),
                   ),
                   Positioned(

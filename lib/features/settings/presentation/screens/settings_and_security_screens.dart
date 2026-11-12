@@ -189,7 +189,11 @@ class NotificationsScreen extends ConsumerWidget {
                                   ),
                                 ),
                           onTap: () async {
-                            await notifier.markRead(n.id);
+                            // Canlı DB'de authenticated rolünün yalnızca `is_read` güncelleme
+                            // izni vardır; zaten okunmuş bildirimi tekrar UPDATE etmeyiz.
+                            if (!n.isRead) {
+                              await notifier.markRead(n.id);
+                            }
                             if (!context.mounted) return;
                             if (postId != null && postId.isNotEmpty) {
                               await context.push(

@@ -1114,10 +1114,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get checklistCategoryDocs => 'Belgeler & Biletler';
 
   @override
-  String get checklistCategoryGear => 'Kıyafet & Ekipman';
+  String get checklistCategoryGear => 'Bavul & Ekipman';
 
   @override
-  String get checklistCategoryHotel => 'Konaklama & Ulaşım';
+  String get checklistCategoryHotel => 'Rezervasyonlar';
 
   @override
   String get checklistCategoryGeneral => 'Genel Hazırlık';

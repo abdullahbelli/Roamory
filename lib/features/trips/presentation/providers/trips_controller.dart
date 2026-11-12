@@ -419,7 +419,7 @@ class TripsController extends Notifier<TripsState> {
   Future<bool> addChecklistItem({
     required String tripId,
     required String title,
-    String category = TripChecklistCategory.general,
+    String category = TripChecklistCategory.other,
   }) async {
     final trip = state.findById(tripId);
     if (trip == null) {

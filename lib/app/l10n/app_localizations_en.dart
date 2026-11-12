@@ -1113,10 +1113,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get checklistCategoryDocs => 'Documents & Tickets';
 
   @override
-  String get checklistCategoryGear => 'Clothing & Gear';
+  String get checklistCategoryGear => 'Luggage & Gear';
 
   @override
-  String get checklistCategoryHotel => 'Stay & Transport';
+  String get checklistCategoryHotel => 'Bookings';
 
   @override
   String get checklistCategoryGeneral => 'General Prep';

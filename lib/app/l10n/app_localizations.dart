@@ -2135,13 +2135,13 @@ abstract class AppLocalizations {
   /// No description provided for @checklistCategoryGear.
   ///
   /// In tr, this message translates to:
-  /// **'Kıyafet & Ekipman'**
+  /// **'Bavul & Ekipman'**
   String get checklistCategoryGear;
 
   /// No description provided for @checklistCategoryHotel.
   ///
   /// In tr, this message translates to:
-  /// **'Konaklama & Ulaşım'**
+  /// **'Rezervasyonlar'**
   String get checklistCategoryHotel;
 
   /// No description provided for @checklistCategoryGeneral.

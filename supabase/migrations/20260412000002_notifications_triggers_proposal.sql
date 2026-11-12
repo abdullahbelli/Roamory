@@ -1,49 +1,53 @@
 -- =============================================================================
--- Roamory — T16 Güvenli Bildirim Üretimi (Notifications Triggers & RLS) Önerisi
+-- Roamory — T16 Güvenli Bildirim Üretimi (Notifications Triggers & RLS) Kaydı
 -- Dosya: supabase/migrations/20260412000002_notifications_triggers_proposal.sql
--- Durum: KULLANICI ONAYI BEKLİYOR (Canlı veritabanında otomatik çalıştırılmadı)
+-- Durum: KULLANICI TARAFINDAN CANLI SUPABASE'DE UYGULANDI
+--        (Bu dosyayı canlı veritabanında otomatik/tekrar çalıştırma.)
 -- =============================================================================
 --
--- AMAÇ:
--- 1. İstemciden sahte bildirim INSERT edilmesini tamamen engellemek (`notifications`
---    üzerinde istemci yalnızca kendi bildirimlerini `SELECT` ve `is_read` olarak
---    `UPDATE` edebilir).
--- 2. Canlı `public.notifications` şemasıyla (`id, user_id, actor_id, type, title,
---    body, post_id, is_read, created_at`) %100 uyumlu biçimde:
---    - Takip (`public.follows` INSERT -> `type = 'follow'`, `actor_id`)
---    - Beğeni (`public.post_likes` INSERT -> `type = 'like'`, `actor_id`, `post_id`)
---    - Yorum (`public.comments` INSERT -> `type = 'comment'`, `actor_id`, `post_id`)
---    bildirimlerini `SECURITY DEFINER` + `set search_path = public` ile üretmek.
--- 3. Kendi kendine yapılan işlemlerde ve `public.user_blocks` ile engellenmiş
---    kullanıcı çiftlerinde bildirim üretmemek.
--- 4. Tekrarlanan takip/beğeni işlemlerinde okunmamış mükerrer bildirim spam'ini
---    önlemek (`is_read = false` kontrolü).
+-- CANLI SUPABASE SQL EDITOR UYGULAMA ÖZETİ:
+-- 1. Mevcut RLS politikaları korundu:
+--    - "View own notifications" (`SELECT` for owner `auth.uid()`)
+--    - "Mark own notifications read" / "Mark own notifications as read"
+--      (`UPDATE` for owner `auth.uid()`)
+-- 2. Yetkiler (Grants):
+--    - İstemciden (`anon`, `authenticated`) `notifications` tablosuna `INSERT`
+--      ve `DELETE` yetkileri kaldırıldı (`REVOKE INSERT, DELETE`).
+--    - `authenticated` rolüne yalnızca `SELECT` ve kolon düzeyinde
+--      `UPDATE (is_read)` izni verildi.
+-- 3. Trigger Mimarisi:
+--    - Ortak `SECURITY DEFINER` fonksiyonu `private.create_social_notification`
+--      oluşturuldu.
+--    - `public.follows`, `public.post_likes` ve `public.comments` tablolarına
+--      `AFTER INSERT` trigger'ları bağlandı; kendi kendine yapılan işlemlerde
+--      ve `public.user_blocks` engellerinde bildirim üretilmez.
+-- 4. Flutter İstemci Uyumu (`NotificationsScreen` & `ProfileSettingsRepository`):
+--    - `markNotificationRead` ve `markAllNotificationsRead` yalnızca
+--      `{'is_read': true}` güncellemesi yapar; başka hiçbir kolon değiştirilmez.
 -- =============================================================================
+--
+-- Not: Aşağıdaki SQL bloğu başlangıçta öneri taslağı olarak yazılmış olup canlı
+-- veritabanında `private.create_social_notification` ortak fonksiyonu ve
+-- mevcut `"View own notifications"` / `"Mark own notifications as read"`
+-- politikaları korunarak eşdeğer biçimde uygulanmıştır; tekrar çalıştırmayın.
 
 begin;
 
 create schema if not exists private;
 
--- İstemcinin doğrudan `notifications` tablosuna INSERT atmasını engelle.
-revoke insert, delete on table public.notifications from anon, authenticated;
-grant select, update on table public.notifications to authenticated;
+-- İstemcinin doğrudan `notifications` tablosuna INSERT/DELETE veya `is_read` dışı UPDATE atmasını engelle.
+revoke insert, delete, update on table public.notifications from anon, authenticated;
+grant select, update (is_read) on table public.notifications to authenticated;
 
 alter table public.notifications enable row level security;
 
-drop policy if exists "Read own notifications" on public.notifications;
-create policy "Read own notifications"
-on public.notifications
-for select
-to authenticated
-using (user_id = (select auth.uid()));
-
-drop policy if exists "Mark own notifications read" on public.notifications;
-create policy "Mark own notifications read"
-on public.notifications
-for update
-to authenticated
-using (user_id = (select auth.uid()))
-with check (user_id = (select auth.uid()));
+-- Canlı veritabanında mevcut olan "View own notifications" ve
+-- "Mark own notifications as read" RLS politikaları korunur (tekrar drop edilmez).
+--
+-- Referans taslak fonksiyonlar (Canlı veritabanında bunların yerine ortak
+-- `private.create_social_notification()` fonksiyonu ve `follows`,
+-- `post_likes`, `comments` `AFTER INSERT` trigger'ları uygulanmıştır;
+-- aşağıdaki taslağı canlı DB'de tekrar çalıştırmayın.):
 
 -- 1) Yeni takipçi bildirimi (`public.follows`)
 create or replace function private.notify_on_follow()

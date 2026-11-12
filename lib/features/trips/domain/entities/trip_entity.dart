@@ -136,40 +136,46 @@ class TripDayEntity {
 
 /// `public.trip_checklist_items.category` kolonu için kanonik kategori kodları.
 ///
-/// Yerelleştirilmiş UI metinlerinin ("Genel Hazırlık" vb.) veritabanına
-/// gönderilmesini engeller; domain ve data katmanlarında sabit İngilizce kısa
-/// kodların (`general`, `docs`, `gear`, `hotel`) tek elden kullanılmasını sağlar.
+/// Canlı Supabase `trip_checklist_items_category_check` kısıtının kabul ettiği
+/// gerçek değerlerle (`documents`, `packing`, `bookings`, `other`) birebir
+/// hizalıdır. Yerelleştirilmiş TR/EN arayüz etiketleri ARB dosyalarından gelir ve
+/// asla veritabanına gönderilmez.
 abstract final class TripChecklistCategory {
-  /// Genel hazırlık kategorisi kodu.
-  static const String general = 'general';
+  /// Belgeler ve biletler kategorisi kodu (`documents`).
+  static const String documents = 'documents';
 
-  /// Belgeler ve biletler kategorisi kodu.
-  static const String docs = 'docs';
+  /// Bavul ve ekipman kategorisi kodu (`packing`).
+  static const String packing = 'packing';
 
-  /// Kıyafet ve ekipman kategorisi kodu.
-  static const String gear = 'gear';
+  /// Rezervasyonlar kategorisi kodu (`bookings`).
+  static const String bookings = 'bookings';
 
-  /// Konaklama ve ulaşım kategorisi kodu.
-  static const String hotel = 'hotel';
+  /// Genel hazırlık / diğer kategorisi kodu (`other` — varsayılan).
+  static const String other = 'other';
 
-  /// Veritabanına gönderilebilen geçerli kanonik kategori kodları.
-  static const Set<String> values = <String>{general, docs, gear, hotel};
+  /// Canlı veritabanı CHECK kısıtının kabul ettiği kanonik kategori kodları.
+  static const Set<String> values = <String>{
+    documents,
+    packing,
+    bookings,
+    other,
+  };
 
-  /// Verilen kodun geçerli kanonik kategori listesinde olup olmadığını döndürür.
+  /// Verilen kodun canlı veritabanı CHECK kısıtıyla uyumlu olup olmadığını döndürür.
   static bool isValid(String? code) {
     if (code == null) return false;
     return values.contains(code.trim().toLowerCase());
   }
 
-  /// Dış kaynaktan okunan kategori değerini bilinen kanonik koda normalize eder.
+  /// Dış kaynaktan okunan kategori değerini canlı kanonik koda normalize eder.
   static String normalize(String? raw) {
     final normalized = (raw ?? '').trim().toLowerCase();
     return switch (normalized) {
-      general || 'other' => general,
-      docs || 'documents' || 'document' => docs,
-      gear || 'equip' || 'equipment' || 'clothing' || 'packing' => gear,
-      hotel || 'stay' || 'accommodation' || 'booking' => hotel,
-      _ => general,
+      documents || 'docs' || 'document' => documents,
+      packing || 'gear' || 'equip' || 'equipment' || 'clothing' => packing,
+      bookings || 'booking' || 'hotel' || 'stay' || 'accommodation' => bookings,
+      other || 'general' => other,
+      _ => other,
     };
   }
 }
@@ -182,7 +188,7 @@ class TripChecklistItemEntity {
     required this.id,
     required this.tripId,
     required this.title,
-    this.category = TripChecklistCategory.general,
+    this.category = TripChecklistCategory.other,
     this.isCompleted = false,
     this.sortOrder = 0,
   });
@@ -196,7 +202,7 @@ class TripChecklistItemEntity {
   /// Hazırlık maddesi metni.
   final String title;
 
-  /// Kategori kodu (`docs`, `gear`, `hotel`, `general`).
+  /// Veritabanı kategori kodu (`documents`, `packing`, `bookings`, `other`).
   final String category;
 
   /// Tamamlanma durumu.

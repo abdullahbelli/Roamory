@@ -300,7 +300,7 @@ class _WidgetTripsRepo implements TripsRepository {
           id: 'chk-1',
           tripId: 'trip-1',
           title: 'Kafa lambası',
-          category: 'gear',
+          category: TripChecklistCategory.packing,
           isCompleted: false,
         ),
       ],
@@ -481,7 +481,7 @@ class _WidgetTripsRepo implements TripsRepository {
   Future<TripChecklistItemEntity> addChecklistItem({
     required String tripId,
     required String title,
-    String category = TripChecklistCategory.general,
+    String category = TripChecklistCategory.other,
     int sortOrder = 0,
   }) async {
     final item = TripChecklistItemEntity(
@@ -698,6 +698,9 @@ class _WidgetCommunityRepo implements CommunityRepository {
 }
 
 class _WidgetProfileSettingsRepo implements ProfileAndSettingsRepository {
+  int markReadCalls = 0;
+  int markAllReadCalls = 0;
+
   @override
   Future<List<NotificationEntity>> fetchNotifications(String userId) async => [
     NotificationEntity(
@@ -725,10 +728,14 @@ class _WidgetProfileSettingsRepo implements ProfileAndSettingsRepository {
   Future<void> markNotificationRead({
     required String notificationId,
     required String userId,
-  }) async {}
+  }) async {
+    markReadCalls++;
+  }
 
   @override
-  Future<void> markAllNotificationsRead(String userId) async {}
+  Future<void> markAllNotificationsRead(String userId) async {
+    markAllReadCalls++;
+  }
 
   @override
   Future<UserProfile> updateExtendedProfile({
@@ -764,6 +771,7 @@ List<dynamic> _buildOverrides(
   _WidgetPrefs prefs, {
   TripsRepository? tripsRepo,
   VisitsRepository? visitsRepo,
+  ProfileAndSettingsRepository? profileRepo,
 }) => [
   appPreferencesStorageProvider.overrideWithValue(prefs),
   authRepositoryProvider.overrideWithValue(_AuthenticatedAuthRepo()),
@@ -773,7 +781,7 @@ List<dynamic> _buildOverrides(
   tripsRepositoryProvider.overrideWithValue(tripsRepo ?? _WidgetTripsRepo()),
   communityRepositoryProvider.overrideWithValue(_WidgetCommunityRepo()),
   profileSettingsRepositoryProvider.overrideWithValue(
-    _WidgetProfileSettingsRepo(),
+    profileRepo ?? _WidgetProfileSettingsRepo(),
   ),
 ];
 
@@ -1310,7 +1318,30 @@ void main() {
       await tester.tap(find.byIcon(Icons.add_rounded));
       await tester.pumpAndSettle();
       expect(find.text('Güneş kremi'), findsOneWidget);
+      // Varsayılan kategori veritabanına `other`, ekrana "Genel Hazırlık" olarak yansır.
+      expect(
+        tripsRepo.trips.first.checklist
+            .firstWhere((c) => c.title == 'Güneş kremi')
+            .category,
+        TripChecklistCategory.other,
+      );
 
+      // Rezervasyonlar -> DB kodu `bookings` olarak eklenir.
+      await tester.tap(find.byType(DropdownButton<String>));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Rezervasyonlar').last);
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'Otel onayı');
+      await tester.tap(find.byIcon(Icons.add_rounded));
+      await tester.pumpAndSettle();
+      expect(
+        tripsRepo.trips.first.checklist
+            .firstWhere((c) => c.title == 'Otel onayı')
+            .category,
+        TripChecklistCategory.bookings,
+      );
+
+      // Tamamlama, geri alma, filtreleme ve silme doğrulaması.
       await tester.tap(find.text('Kafa lambası'));
       await tester.pumpAndSettle();
       expect(
@@ -1319,6 +1350,30 @@ void main() {
             .isCompleted,
         isTrue,
       );
+      await tester.tap(find.text('Tamamlananlar'));
+      await tester.pumpAndSettle();
+      expect(find.text('Kafa lambası'), findsOneWidget);
+      expect(find.text('Güneş kremi'), findsNothing);
+
+      // Geri alma (uncheck) -> Eksikler sekmesine geçer.
+      await tester.tap(find.text('Kafa lambası'));
+      await tester.pumpAndSettle();
+      expect(
+        tripsRepo.trips.first.checklist
+            .firstWhere((c) => c.id == 'chk-1')
+            .isCompleted,
+        isFalse,
+      );
+      await tester.tap(find.text('Tümü'));
+      await tester.pumpAndSettle();
+
+      // Madde silme (`Otel onayı`) ve kalan 1/2 tamamlama yüzdesi (%50).
+      await tester.tap(find.byIcon(Icons.delete_outline_rounded).last);
+      await tester.pumpAndSettle();
+      expect(find.text('Otel onayı'), findsNothing);
+
+      await tester.tap(find.text('Kafa lambası'));
+      await tester.pumpAndSettle();
       expect(find.textContaining('50%'), findsOneWidget);
     },
   );
@@ -1330,8 +1385,9 @@ void main() {
     'Bildirimler ekranında etkileşim filtresi, okundu işaretleme ve gönderi yönlendirmesi çalışır',
     (tester) async {
       final prefs = _WidgetPrefs()..locale = const Locale('tr');
+      final profileRepo = _WidgetProfileSettingsRepo();
       final container = ProviderContainer(
-        overrides: _buildOverrides(prefs).cast(),
+        overrides: _buildOverrides(prefs, profileRepo: profileRepo).cast(),
       );
       addTearDown(container.dispose);
 
@@ -1362,13 +1418,22 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(PostDetailsScreen), findsOneWidget);
       expect(container.read(profileSettingsControllerProvider).unreadCount, 1);
+      expect(profileRepo.markReadCalls, 1);
 
-      // Geri dönüp Tümünü Okundu Say -> unreadCount 0 olmalıdır.
+      // Geri dönüp zaten okunmuş bildirime tekrar dokun -> ek UPDATE göndermemelidir.
+      router.pop();
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Yeni Yorum'));
+      await tester.pumpAndSettle();
+      expect(profileRepo.markReadCalls, 1);
+
+      // Geri dönüp Tümünü Okundu Say -> unreadCount 0 ve tek toplu güncelleme olmalıdır.
       router.pop();
       await tester.pumpAndSettle();
       await tester.tap(find.text('Tümünü Okundu Say'));
       await tester.pumpAndSettle();
       expect(container.read(profileSettingsControllerProvider).unreadCount, 0);
+      expect(profileRepo.markAllReadCalls, 1);
     },
   );
 }

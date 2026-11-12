@@ -597,7 +597,7 @@ class _FakeTripsRepo implements TripsRepository {
   Future<TripChecklistItemEntity> addChecklistItem({
     required String tripId,
     required String title,
-    String category = TripChecklistCategory.general,
+    String category = TripChecklistCategory.other,
     int sortOrder = 0,
   }) async {
     final item = TripChecklistItemEntity(
@@ -642,7 +642,7 @@ class _FakeTripsRepo implements TripsRepository {
       id: itemId,
       tripId: 'trip-1',
       title: title ?? 'Pasaport',
-      category: category ?? 'docs',
+      category: category ?? TripChecklistCategory.documents,
       isCompleted: isCompleted ?? true,
     );
   }
@@ -1208,7 +1208,7 @@ void main() {
             .addChecklistItem(
               tripId: trip.id,
               title: 'Çadır ve uyku tulumu',
-              category: 'gear',
+              category: TripChecklistCategory.packing,
             );
         final item = container
             .read(tripsControllerProvider)
@@ -1307,7 +1307,7 @@ void main() {
           await notifier.addChecklistItem(
             tripId: created.id,
             title: 'Pasaport',
-            category: 'docs',
+            category: TripChecklistCategory.documents,
           ),
           isTrue,
         );
@@ -1885,7 +1885,7 @@ void main() {
                   id: 'chk-1',
                   tripId: 'trip-1',
                   title: 'Kafa lambası',
-                  category: TripChecklistCategory.gear,
+                  category: TripChecklistCategory.packing,
                   sortOrder: 0,
                 ),
               ],
@@ -1923,14 +1923,17 @@ void main() {
         final addedChecklist = await ctrl.addChecklistItem(
           tripId: 'trip-1',
           title: 'Pasaport fotokopisi',
-          category: TripChecklistCategory.docs,
+          category: TripChecklistCategory.documents,
         );
         expect(addedChecklist, isTrue);
         final afterChk = container
             .read(tripsControllerProvider)
             .findById('trip-1')!;
         expect(afterChk.checklist.length, 2);
-        expect(afterChk.checklist.last.category, TripChecklistCategory.docs);
+        expect(
+          afterChk.checklist.last.category,
+          TripChecklistCategory.documents,
+        );
         expect(afterChk.checklist.last.sortOrder, 1);
 
         final toggled = await ctrl.toggleChecklistItem(

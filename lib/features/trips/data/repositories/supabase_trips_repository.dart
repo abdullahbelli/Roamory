@@ -385,7 +385,7 @@ class SupabaseTripsRepository implements TripsRepository {
   Future<TripChecklistItemEntity> addChecklistItem({
     required String tripId,
     required String title,
-    String category = TripChecklistCategory.general,
+    String category = TripChecklistCategory.other,
     int sortOrder = 0,
   }) async {
     try {
@@ -430,12 +430,21 @@ class SupabaseTripsRepository implements TripsRepository {
     String? category,
   }) async {
     try {
+      String? normalizedCategory;
+      if (category != null) {
+        normalizedCategory = category.trim().toLowerCase();
+        if (!TripChecklistCategory.isValid(normalizedCategory)) {
+          throw const ValidationAppException(
+            code: 'checklist_invalid_category',
+          );
+        }
+      }
       final row = await _requireClient
           .from('trip_checklist_items')
           .update({
             'is_completed': ?isCompleted,
             if (title != null) 'title': title.trim(),
-            'category': ?category,
+            'category': ?normalizedCategory,
           })
           .eq('id', itemId)
           .select()

@@ -57,7 +57,7 @@ abstract interface class TripsRepository {
   Future<TripChecklistItemEntity> addChecklistItem({
     required String tripId,
     required String title,
-    String category = TripChecklistCategory.general,
+    String category = TripChecklistCategory.other,
     int sortOrder = 0,
   });
 
