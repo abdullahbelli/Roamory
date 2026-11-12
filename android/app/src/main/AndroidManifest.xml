@@ -1,4 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- OpenStreetMap karo yükleme ve Supabase API erişimi için internet izni -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Harita üzerinde mevcut konumu göstermek ve özel mekan koordinatı almak için konum izinleri -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:label="roamory"
         android:name="${applicationName}"

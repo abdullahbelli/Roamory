@@ -40,8 +40,11 @@ abstract final class AuthValidators {
     return _usernameRegex.hasMatch(normalizeUsername(value));
   }
 
-  /// 6 haneli doğrulama kodunun yalnızca rakamlardan oluştuğunu doğrular.
+  /// 6-8 haneli doğrulama kodunun yalnızca rakamlardan oluştuğunu doğrular.
+  ///
+  /// Supabase proje ayarlarına göre OTP uzunluğu 6 veya 8 haneli olabildiği için
+  /// her iki uzunluk da desteklenir.
   static bool isValidOtpCode(String value) {
-    return RegExp(r'^\d{6}$').hasMatch(value.trim());
+    return RegExp(r'^\d{6,8}$').hasMatch(value.trim());
   }
 }

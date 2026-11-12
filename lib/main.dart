@@ -7,16 +7,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Roamory uygulamasının giriş noktası.
 ///
-/// Yerel tercihler (`SharedPreferences`) ve derleme ortamından sağlanan
-/// Supabase yapılandırması başlatıldıktan sonra Riverpod kök kapsamı kurulur.
+/// Uygulama başlamadan önce `.env` ortam dosyası yüklenir, yerel tercihler
+/// (`SharedPreferences`) hazırlanır ve Supabase bağlantısı doğrulanarak başlatılır.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Yerel dil, tema ve karşılama turu tercihlerini açılışta senkron hazırlarız.
+  // 1. Kök dizindeki .env dosyasını yükle (--dart-define verildiyse yedek olarak çalışır).
+  await SupabaseConfig.loadEnvFile();
+
+  // 2. Yerel dil, tema ve karşılama turu tercihlerini açılışta hazırla.
   final sharedPreferences = await SharedPreferences.getInstance();
   final preferencesStorage = SharedPreferencesAppStorage(sharedPreferences);
 
-  // Supabase yalnızca --dart-define değerleri sağlandıysa başlatılır.
+  // 3. .env veya --dart-define üzerinden Supabase yapılandırmasını oku ve başlat.
   final supabaseConfig = SupabaseConfig.fromEnvironment();
   await SupabaseConfig.initializeIfConfigured(supabaseConfig);
 
@@ -24,6 +27,7 @@ Future<void> main() async {
     ProviderScope(
       overrides: [
         appPreferencesStorageProvider.overrideWithValue(preferencesStorage),
+        supabaseConfigProvider.overrideWithValue(supabaseConfig),
       ],
       child: const RoamoryApp(),
     ),

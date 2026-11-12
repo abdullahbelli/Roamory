@@ -127,10 +127,24 @@ class SupabaseAuthDatasource {
     return _mapUser(user);
   }
 
-  /// Oturumu yenileyerek e-posta doğrulama bilgisinin güncellenip güncellenmediğini kontrol eder.
+  /// Oturumu ve sunucudaki kullanıcı kaydını yenileyerek e-posta doğrulama
+  /// bilgisinin (`email_confirmed_at`) güncellenip güncellenmediğini kontrol eder.
   Future<AuthUser?> refreshCurrentUser() async {
-    final client = _requireClient;
+    final client = _client;
+    if (client == null) {
+      return null;
+    }
     if (client.auth.currentSession != null) {
+      try {
+        // Önce sunucudan güncel kullanıcı nesnesini çekerek emailConfirmedAt alanını tazeleriz.
+        final userResponse = await client.auth.getUser();
+        if (userResponse.user != null &&
+            userResponse.user!.emailConfirmedAt != null) {
+          await client.auth.refreshSession();
+          return _mapUser(userResponse.user!);
+        }
+      } catch (_) {}
+
       final response = await client.auth.refreshSession();
       final user = response.user ?? client.auth.currentUser;
       return user == null ? null : _mapUser(user);

@@ -145,11 +145,64 @@ abstract final class AppTheme {
           borderSide: BorderSide(color: colors.error, width: 1.5),
         ),
       ),
+      // Seçili filtre chip'lerinde (ChoiceChip, FilterChip) hem açık hem koyu
+      // temada yüksek metin ve ikon kontrastı sağlamak için durum bazlı (selected)
+      // renk çözümlemesi, Material 3 `color` ve `secondaryLabelStyle` birlikte tanımlanır.
       chipTheme: ChipThemeData(
+        color: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return colors.primary;
+          }
+          if (states.contains(WidgetState.disabled)) {
+            return colors.surfaceVariant;
+          }
+          return colors.surface;
+        }),
         backgroundColor: colors.surface,
         selectedColor: colors.primary,
-        labelStyle: textTheme.labelMedium,
-        side: BorderSide(color: colors.outline),
+        secondarySelectedColor: colors.primary,
+        disabledColor: colors.surfaceVariant,
+        checkmarkColor: colors.onPrimary,
+        deleteIconColor: colors.textSecondary,
+        iconTheme: IconThemeData(
+          size: 18,
+          color: WidgetStateColor.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return colors.onPrimary;
+            }
+            if (states.contains(WidgetState.disabled)) {
+              return colors.textSecondary;
+            }
+            return colors.primary;
+          }),
+        ),
+        // RawChip (ChoiceChip / FilterChip) widget'ı Material 3 içinde
+        // `effectiveLabelStyle.color` özelliğini `WidgetStateProperty.resolveAs`
+        // ile çözer; bu nedenle renk her zaman `WidgetStateColor` olarak verilir.
+        labelStyle: (textTheme.labelMedium ?? const TextStyle(fontSize: 13))
+            .copyWith(
+              fontWeight: FontWeight.w600,
+              color: WidgetStateColor.resolveWith((states) {
+                if (states.contains(WidgetState.selected)) {
+                  return colors.onPrimary;
+                }
+                if (states.contains(WidgetState.disabled)) {
+                  return colors.textSecondary;
+                }
+                return colors.textPrimary;
+              }),
+            ),
+        secondaryLabelStyle:
+            (textTheme.labelMedium ?? const TextStyle(fontSize: 13)).copyWith(
+              color: colors.onPrimary,
+              fontWeight: FontWeight.w700,
+            ),
+        side: WidgetStateBorderSide.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return BorderSide(color: colors.primary, width: 1.5);
+          }
+          return BorderSide(color: colors.outline);
+        }),
         shape: const StadiumBorder(),
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.md,

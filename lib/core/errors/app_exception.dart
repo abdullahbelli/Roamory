@@ -36,8 +36,15 @@ final class UnauthorizedAppException extends AppException {
   const UnauthorizedAppException({super.code, super.debugMessage});
 
   @override
-  String localizedMessage(AppLocalizations l10n) =>
-      l10n.errorUnauthorizedMessage;
+  String localizedMessage(AppLocalizations l10n) {
+    if (code == 'otp_invalid') {
+      return l10n.validationOtpInvalid;
+    }
+    if (code == 'db_table_permission_denied') {
+      return l10n.errorDatabaseTablePermissionMessage;
+    }
+    return l10n.errorUnauthorizedMessage;
+  }
 }
 
 /// İstenen kayıt veritabanında bulunamadığında fırlatılır.
@@ -55,7 +62,32 @@ final class ValidationAppException extends AppException {
   const ValidationAppException({super.code, super.debugMessage});
 
   @override
-  String localizedMessage(AppLocalizations l10n) => l10n.errorValidationMessage;
+  String localizedMessage(AppLocalizations l10n) {
+    return switch (code) {
+      'invalid_credentials' => l10n.errorValidationMessage,
+      'email_already_in_use' => l10n.errorValidationMessage,
+      'email_not_confirmed' => l10n.verifyNotConfirmedYet,
+      'rate_limit_exceeded' => l10n.forgotSmtpNotice,
+      'otp_invalid' => l10n.validationOtpInvalid,
+      'weak_password' => l10n.validationPasswordWeak,
+      'invalid_username' ||
+      'duplicate_record' => l10n.profileSetupUsernameTaken,
+      'invalid_full_name' => l10n.validationFullNameInvalid,
+      'avatar_too_large' => l10n.profileSetupAvatarSizeError,
+      'visit_photo_too_large' ||
+      'post_photo_too_large' => l10n.visitPhotoSizeError,
+      'invalid_coordinates' => l10n.visitValidationCoordinateInvalid,
+      'invalid_country' => l10n.visitValidationCountryInvalid,
+      'invalid_city' => l10n.visitValidationCityInvalid,
+      'invalid_visit_rating' => l10n.visitValidationRatingInvalid,
+      'trip_date_order_invalid' => l10n.tripValidationDateOrder,
+      'trip_title_required' => l10n.tripValidationTitleRequired,
+      'checklist_title_required' => l10n.checklistValidationTitleRequired,
+      'checklist_invalid_category' => l10n.checklistValidationInvalidCategory,
+      'post_caption_required' => l10n.postValidationCaptionRequired,
+      _ => l10n.errorValidationMessage,
+    };
+  }
 }
 
 /// Supabase bağlantı bilgileri derleme ortamında eksikse fırlatılır.

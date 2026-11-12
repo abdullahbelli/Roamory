@@ -561,4 +561,891 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get authSignOutConfirmMessage =>
       'Are you sure you want to sign out of your account?';
+
+  @override
+  String get commonAll => 'All';
+
+  @override
+  String get commonEdit => 'Edit';
+
+  @override
+  String get commonAdd => 'Add';
+
+  @override
+  String get commonApply => 'Apply';
+
+  @override
+  String get commonReset => 'Reset';
+
+  @override
+  String get commonSeeAll => 'See All';
+
+  @override
+  String get commonSearch => 'Search';
+
+  @override
+  String get commonShare => 'Share';
+
+  @override
+  String get commonPrivateBadge => 'Private Journal';
+
+  @override
+  String get commonPublicBadge => 'Public';
+
+  @override
+  String get commonDraftBadge => 'Draft';
+
+  @override
+  String get commonSavedSuccess => 'Saved successfully.';
+
+  @override
+  String get commonDeletedSuccess => 'Record deleted.';
+
+  @override
+  String get commonOptional => 'Optional';
+
+  @override
+  String get commonYes => 'Yes';
+
+  @override
+  String get commonNo => 'No';
+
+  @override
+  String get homeGreetingPrefix => 'Hello,';
+
+  @override
+  String get homeGreetingSubtitle =>
+      'Which route would you like to discover or log today?';
+
+  @override
+  String get homePassportBadge => 'DIGITAL PASSPORT SUMMARY';
+
+  @override
+  String get homePassportTitle => 'Your Travel Footprint';
+
+  @override
+  String get homePassportCountries => 'Countries';
+
+  @override
+  String get homePassportCities => 'Cities';
+
+  @override
+  String get homePassportVisits => 'Visits';
+
+  @override
+  String get homePassportWishlist => 'Wishlist';
+
+  @override
+  String get homeQuickAddVisit => 'Log Visit';
+
+  @override
+  String get homeQuickPlanTrip => 'Plan Trip';
+
+  @override
+  String get homeQuickMyJournal => 'My Journal';
+
+  @override
+  String get homeQuickWishlist => 'Wishlist';
+
+  @override
+  String get homeUpcomingTripTitle => 'Upcoming Trip';
+
+  @override
+  String get homeUpcomingTripEmpty =>
+      'You don\'t have an active planned trip yet.';
+
+  @override
+  String get homeFeaturedTitle => 'Featured Destinations';
+
+  @override
+  String get homeRecentMemoriesTitle => 'Recent Travel Memories';
+
+  @override
+  String get homeRecentMemoriesEmpty =>
+      'You haven\'t logged a visit yet. Record your first memory!';
+
+  @override
+  String get homeCommunityHighlightTitle => 'Community Inspiration';
+
+  @override
+  String get homeCommunityHighlightEmpty =>
+      'No published posts in the community yet.';
+
+  @override
+  String get exploreHeaderBadge => 'ROAMORY GUIDE';
+
+  @override
+  String get exploreSearchHint => 'Search country, city, or place...';
+
+  @override
+  String get exploreFilterButton => 'Filter';
+
+  @override
+  String get exploreWishlistButton => 'My Wishlist';
+
+  @override
+  String get exploreViewMap => 'View on Map';
+
+  @override
+  String get exploreViewList => 'List View';
+
+  @override
+  String get exploreFeaturedBadge => 'CURATED ROUTE';
+
+  @override
+  String get exploreTrendingTitle => 'Places Worth Discovering';
+
+  @override
+  String get exploreCuratedTitle => 'Suggestions by Category';
+
+  @override
+  String get exploreEmptyTitle => 'No catalog places found yet';
+
+  @override
+  String get exploreEmptyMessage =>
+      'There are no published catalog places in the database or no matches for your filters. You can add your own private place from the map or visit screen.';
+
+  @override
+  String get searchTitle => 'Search & Filters';
+
+  @override
+  String get searchCountryLabel => 'Country';
+
+  @override
+  String get searchCountryHint => 'e.g. Turkey, Italy';
+
+  @override
+  String get searchCityLabel => 'City';
+
+  @override
+  String get searchCityHint => 'e.g. Izmir, Kyoto';
+
+  @override
+  String get searchCategoryLabel => 'Category';
+
+  @override
+  String get searchMinRatingLabel => 'Minimum Rating';
+
+  @override
+  String get searchSortLabel => 'Sort By';
+
+  @override
+  String get searchSortNewest => 'Newest';
+
+  @override
+  String get searchSortAlphabetical => 'Alphabetical (A-Z)';
+
+  @override
+  String searchResultsCount(int count) {
+    return '$count places found';
+  }
+
+  @override
+  String get searchClearFilters => 'Clear Filters';
+
+  @override
+  String get placeDetailsStoryTitle => 'Place Story';
+
+  @override
+  String get placeDetailsCoordinatesTitle => 'Location & Map';
+
+  @override
+  String get placeDetailsCommunityTitle => 'Traveler Stories';
+
+  @override
+  String get placeDetailsCommunityEmpty =>
+      'No community posts shared for this place yet.';
+
+  @override
+  String get placeDetailsActionWishlistAdd => 'Add to Wishlist';
+
+  @override
+  String get placeDetailsActionWishlistRemove => 'In Wishlist';
+
+  @override
+  String get placeDetailsActionAddToTrip => 'Add to Trip';
+
+  @override
+  String get placeDetailsActionMarkVisited => 'Visited / Log Journal';
+
+  @override
+  String get placeDetailsPrivateNotice =>
+      'This place was privately created for your personal map.';
+
+  @override
+  String get wishlistTitle => 'My Wishlist';
+
+  @override
+  String wishlistSubtitle(int count) {
+    return '$count saved destinations';
+  }
+
+  @override
+  String get wishlistEmptyTitle => 'Your wishlist is empty';
+
+  @override
+  String get wishlistEmptyMessage =>
+      'Save coves, cities, and cultural stops from Explore to plan future routes.';
+
+  @override
+  String get wishlistExploreCta => 'Start Exploring';
+
+  @override
+  String get wishlistNoteHint => 'Short note (e.g. Visit in spring)';
+
+  @override
+  String get wishlistAddToTrip => 'Add to Trip';
+
+  @override
+  String get wishlistRemoveConfirmTitle => 'Remove from Wishlist';
+
+  @override
+  String get wishlistRemoveConfirmMessage =>
+      'Are you sure you want to remove this place from your wishlist?';
+
+  @override
+  String get mapAttribution => '© OpenStreetMap contributors';
+
+  @override
+  String mapStatsPill(int visits, int wishlist) {
+    return '$visits Visits • $wishlist Wishlist';
+  }
+
+  @override
+  String get mapFilterButton => 'Map Filters';
+
+  @override
+  String get mapHistoryButton => 'Visit History';
+
+  @override
+  String get mapAddVisitFab => 'Log New Visit';
+
+  @override
+  String get mapLegendVisited => 'Visited';
+
+  @override
+  String get mapLegendWishlist => 'Wishlist';
+
+  @override
+  String get mapLegendCommunity => 'Catalog';
+
+  @override
+  String get mapEmptyOverlay =>
+      'No pins to display on the map yet. Log your first visit or save a wishlist place!';
+
+  @override
+  String get mapFilterLayerTitle => 'Visible Pins';
+
+  @override
+  String get mapFilterLayerAll => 'All';
+
+  @override
+  String get mapFilterLayerVisited => 'My Visits';
+
+  @override
+  String get mapFilterLayerWishlist => 'My Wishlist';
+
+  @override
+  String get mapFilterOnlyFavorites => 'Only 4+ Star Favorites';
+
+  @override
+  String get mapFilterYearLabel => 'Visit Year';
+
+  @override
+  String get visitsHistoryTitle => 'Visit History';
+
+  @override
+  String visitsHistorySubtitle(int count) {
+    return '$count personal travel entries';
+  }
+
+  @override
+  String get visitsEmptyTitle => 'No visit entries yet';
+
+  @override
+  String get visitsEmptyMessage =>
+      'Start logging places you\'ve visited, your ratings, and photos in your private field journal.';
+
+  @override
+  String get visitAddStep1Title => 'Log Visit (Step 1 / 2)';
+
+  @override
+  String get visitAddSelectPlaceLabel => 'Select Place or Create New';
+
+  @override
+  String get visitAddCreateCustomPlace => 'Create Custom Private Place';
+
+  @override
+  String get visitAddPlaceNameLabel => 'Place Name';
+
+  @override
+  String get visitAddPlaceNameHint => 'e.g. Kabak Bay Viewpoint';
+
+  @override
+  String get visitAddLatitudeLabel => 'Latitude';
+
+  @override
+  String get visitAddLongitudeLabel => 'Longitude';
+
+  @override
+  String get visitAddDateLabel => 'Visit Date';
+
+  @override
+  String get visitAddTodayButton => 'Select Today';
+
+  @override
+  String get visitAddRatingLabel => 'Your Personal Rating';
+
+  @override
+  String get visitAddCategoriesLabel => 'Experience Tags';
+
+  @override
+  String get visitAddContinueToJournal => 'Continue to Journal Details';
+
+  @override
+  String get visitJournalStep2Title => 'Travel Journal (Step 2 / 2)';
+
+  @override
+  String get visitJournalTitleLabel => 'Memory Title';
+
+  @override
+  String get visitJournalTitleHint => 'e.g. Misty dawn trail walk';
+
+  @override
+  String get visitJournalNotesLabel => 'Private Journal Notes';
+
+  @override
+  String get visitJournalNotesHint =>
+      'Write about the atmosphere, local flavors, and details you never want to forget...';
+
+  @override
+  String get visitJournalPhotosLabel => 'Visit Photos (Up to 10 MB)';
+
+  @override
+  String get visitJournalAddPhoto => 'Upload Photo';
+
+  @override
+  String get visitJournalPrivacyBanner =>
+      'Your personal visits and journal notes are private by default and never shared publicly without your consent.';
+
+  @override
+  String get visitDetailsTitle => 'Visit Details';
+
+  @override
+  String get visitDetailsDeleteConfirmTitle => 'Delete Visit Entry';
+
+  @override
+  String get visitDetailsDeleteConfirmMessage =>
+      'Are you sure you want to permanently delete this visit and its photos?';
+
+  @override
+  String get visitDetailsConvertToPostTitle =>
+      'Share This Memory with Community';
+
+  @override
+  String get visitDetailsConvertToPostSubtitle =>
+      'Your private journal notes remain hidden; a new public post is created with the summary you choose.';
+
+  @override
+  String get visitDetailsConvertToPostButton => 'Convert to Post';
+
+  @override
+  String get visitDetailsPlanRouteButton => 'Plan as Route';
+
+  @override
+  String get visitValidationPlaceRequired =>
+      'Please select a place or enter a custom place name and coordinates.';
+
+  @override
+  String get visitValidationCountryInvalid =>
+      'Please enter a valid country name or 2-letter ISO country code (e.g. Turkey, Italy, TR, IT).';
+
+  @override
+  String get visitValidationCityInvalid =>
+      'Please enter a valid city or region name (at least 2 letters, no numbers).';
+
+  @override
+  String get visitValidationCoordinateInvalid =>
+      'Please enter a valid latitude (-90..90) and longitude (-180..180).';
+
+  @override
+  String get visitValidationRatingInvalid => 'Rating must be between 1 and 5.';
+
+  @override
+  String get visitPhotoSizeError => 'Visit photo must be 10 MB or smaller.';
+
+  @override
+  String get tripsTabPlanned => 'Planned';
+
+  @override
+  String get tripsTabOngoing => 'Ongoing';
+
+  @override
+  String get tripsTabCompleted => 'Completed';
+
+  @override
+  String get tripsCreateButton => 'Plan New Trip';
+
+  @override
+  String get tripsEmptyTitle => 'No trips planned yet';
+
+  @override
+  String get tripsEmptyMessage =>
+      'Turn your wishlist places into day-by-day itineraries, order stops, and manage your packing checklist.';
+
+  @override
+  String get tripCreateTitle => 'Create Trip Plan';
+
+  @override
+  String get tripEditTitle => 'Edit Trip';
+
+  @override
+  String get tripEditPreserveDaysNotice =>
+      'Your existing days, stops, and checklist remain preserved; changing dates will never delete your data.';
+
+  @override
+  String get tripTitleLabel => 'Trip Title';
+
+  @override
+  String get tripTitleHint => 'e.g. Lycian Way & Kas Route';
+
+  @override
+  String get tripCountryLabel => 'Destination Country';
+
+  @override
+  String get tripCityLabel => 'Destination City / Region';
+
+  @override
+  String get tripStartDateLabel => 'Start Date';
+
+  @override
+  String get tripEndDateLabel => 'End Date';
+
+  @override
+  String get tripStatusLabel => 'Status';
+
+  @override
+  String get tripDescriptionLabel => 'Route Notes';
+
+  @override
+  String get tripDescriptionHint =>
+      'General purpose of this trip, transport notes, or reminders...';
+
+  @override
+  String get tripValidationTitleRequired => 'Please enter a trip title.';
+
+  @override
+  String get tripValidationDateOrder =>
+      'End date cannot be earlier than start date.';
+
+  @override
+  String tripDetailsDaysStat(int count) {
+    return '$count Days';
+  }
+
+  @override
+  String tripDetailsStopsStat(int count) {
+    return '$count Stops';
+  }
+
+  @override
+  String tripDetailsChecklistStat(int done, int total) {
+    return '$done/$total Checklist';
+  }
+
+  @override
+  String get tripDetailsItineraryButton => 'Edit Daily Itinerary';
+
+  @override
+  String get tripDetailsChecklistButton => 'Trip Checklist';
+
+  @override
+  String get tripDetailsDeleteConfirmTitle => 'Delete Trip Plan';
+
+  @override
+  String get tripDetailsDeleteConfirmMessage =>
+      'Are you sure you want to delete this trip plan, all its days, stops, and checklist?';
+
+  @override
+  String get itineraryTitle => 'Daily Itinerary Planner';
+
+  @override
+  String itineraryDayLabel(int day) {
+    return 'Day $day';
+  }
+
+  @override
+  String get itineraryDayNotesHint => 'Theme or key note for today...';
+
+  @override
+  String get itineraryAddStopButton => 'Add New Stop';
+
+  @override
+  String get itineraryStopNoteHint =>
+      'Stop note or time slot (e.g. 10:00 - Breakfast)';
+
+  @override
+  String get itineraryEmptyStops => 'No stops added to this day yet.';
+
+  @override
+  String get itineraryNoPlacesAvailable =>
+      'No places available to add as a stop yet. Add a private place or visit first.';
+
+  @override
+  String get itineraryAddPrivatePlaceAction => 'Add Private Place';
+
+  @override
+  String get checklistTitle => 'Trip Checklist';
+
+  @override
+  String get checklistProgressTitle => 'Preparation Progress';
+
+  @override
+  String get checklistFilterAll => 'All';
+
+  @override
+  String get checklistFilterPending => 'Pending';
+
+  @override
+  String get checklistFilterCompleted => 'Completed';
+
+  @override
+  String get checklistCategoryDocs => 'Documents & Tickets';
+
+  @override
+  String get checklistCategoryGear => 'Clothing & Gear';
+
+  @override
+  String get checklistCategoryHotel => 'Stay & Transport';
+
+  @override
+  String get checklistCategoryGeneral => 'General Prep';
+
+  @override
+  String get checklistAddItemHint => 'Add new checklist item...';
+
+  @override
+  String get checklistEmptyMessage =>
+      'No checklist items added for this trip yet.';
+
+  @override
+  String get communityFeedExploreTab => 'Explore';
+
+  @override
+  String get communityFeedFollowingTab => 'Following';
+
+  @override
+  String get communityCreatePostButton => 'New Post';
+
+  @override
+  String get communityEmptyExplore =>
+      'No published posts in the community yet. Be the first to share a story!';
+
+  @override
+  String get communityEmptyFollowing =>
+      'Travelers you follow haven\'t shared posts yet, or you aren\'t following anyone yet.';
+
+  @override
+  String get communityLikeAction => 'Like';
+
+  @override
+  String get communityCommentAction => 'Comment';
+
+  @override
+  String get communitySaveAction => 'Save';
+
+  @override
+  String get communityReportAction => 'Report Content';
+
+  @override
+  String get communityBlockUserAction => 'Block User';
+
+  @override
+  String get communityUnblockUserAction => 'Unblock';
+
+  @override
+  String get communityFollowAction => 'Follow';
+
+  @override
+  String get communityFollowingAction => 'Following';
+
+  @override
+  String get postCreateTitle => 'Create Community Post';
+
+  @override
+  String get postCreateTitleLabel => 'Post Title';
+
+  @override
+  String get postCreateTitleHint => 'e.g. Sunrise balloons over Cappadocia';
+
+  @override
+  String get postCreateCaptionLabel => 'Your Story & Tips';
+
+  @override
+  String get postCreateCaptionHint =>
+      'Share route tips and your experience for fellow travelers...';
+
+  @override
+  String get postCreateSelectPlaceLabel => 'Related Place (Optional)';
+
+  @override
+  String get postCreateLinkVisitLabel => 'Linked Visit Entry';
+
+  @override
+  String get postCreateLinkTripLabel => 'Linked Trip Plan';
+
+  @override
+  String get postCreatePrivacyNotice =>
+      'Your private journal notes stay hidden; only the text and photos you select here will be published.';
+
+  @override
+  String get postCreateSaveDraft => 'Save Draft';
+
+  @override
+  String get postCreatePublish => 'Publish Now';
+
+  @override
+  String get postValidationCaptionRequired =>
+      'Please enter a title or caption for your post.';
+
+  @override
+  String get postDetailsTitle => 'Post Details';
+
+  @override
+  String get postDetailsDeleteConfirmTitle => 'Delete Post';
+
+  @override
+  String get postDetailsDeleteConfirmMessage =>
+      'Are you sure you want to delete this community post?';
+
+  @override
+  String get commentsTitle => 'Comments';
+
+  @override
+  String get commentsEmptyMessage =>
+      'No comments yet. Write the first comment!';
+
+  @override
+  String get commentsInputHint => 'Add a respectful comment...';
+
+  @override
+  String get commentsSendButton => 'Post';
+
+  @override
+  String get commentsDeleteConfirmTitle => 'Delete Comment';
+
+  @override
+  String get commentsDeleteConfirmMessage =>
+      'Are you sure you want to delete your comment?';
+
+  @override
+  String get reportSheetTitle => 'Report Content or User';
+
+  @override
+  String get reportReasonSpam => 'Spam or misleading content';
+
+  @override
+  String get reportReasonInappropriate => 'Inappropriate or offensive content';
+
+  @override
+  String get reportReasonHarassment =>
+      'Harassment or community guideline violation';
+
+  @override
+  String get reportDetailsHint => 'Additional details (optional)';
+
+  @override
+  String get reportSubmittedMessage =>
+      'Your report has been submitted for review. Thank you.';
+
+  @override
+  String get blockConfirmTitle => 'Block Traveler';
+
+  @override
+  String get blockConfirmMessage =>
+      'When you block this user, you will no longer see each other\'s posts or profiles, and any existing follow relation will be removed.';
+
+  @override
+  String get blockSuccessMessage => 'User blocked.';
+
+  @override
+  String get travelerProfileTitle => 'Traveler Profile';
+
+  @override
+  String get travelerPostsStat => 'Posts';
+
+  @override
+  String get travelerFollowersStat => 'Followers';
+
+  @override
+  String get travelerFollowingStat => 'Following';
+
+  @override
+  String get followersTitle => 'Followers';
+
+  @override
+  String get followingTitle => 'Following';
+
+  @override
+  String get followersEmptyMessage => 'No followers yet.';
+
+  @override
+  String get followingEmptyMessage => 'Not following any travelers yet.';
+
+  @override
+  String get myProfileTitle => 'My Profile';
+
+  @override
+  String get myProfileEditButton => 'Edit Profile';
+
+  @override
+  String get myProfileTabPosts => 'My Posts';
+
+  @override
+  String get myProfileTabJournal => 'Private Journal';
+
+  @override
+  String get myProfileTabTrips => 'My Trips';
+
+  @override
+  String get myProfileTabSaved => 'Saved Posts';
+
+  @override
+  String get myProfilePassportButton => 'Interactive Passport Map';
+
+  @override
+  String get editProfileTitle => 'Edit Profile';
+
+  @override
+  String get editProfileHomeCityLabel => 'Home City';
+
+  @override
+  String get editProfileHomeCountryLabel => 'Home Country';
+
+  @override
+  String get editProfilePublicToggleTitle => 'Public Traveler Profile';
+
+  @override
+  String get editProfilePublicToggleSubtitle =>
+      'When enabled, other travelers can view your profile and published posts.';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get notificationsMarkAllRead => 'Mark All Read';
+
+  @override
+  String get notificationsFilterAll => 'All';
+
+  @override
+  String get notificationsFilterFollows => 'Followers';
+
+  @override
+  String get notificationsFilterInteractions => 'Interactions';
+
+  @override
+  String get notificationsFilterSystem => 'System';
+
+  @override
+  String get notificationsEmptyTitle => 'No notifications yet';
+
+  @override
+  String get notificationsEmptyMessage =>
+      'New followers, likes, and comments will appear here.';
+
+  @override
+  String get settingsAccountSection => 'Account & Security';
+
+  @override
+  String get settingsPreferencesSection => 'Appearance & Language';
+
+  @override
+  String get settingsPrivacySection => 'Privacy & Safety';
+
+  @override
+  String get settingsBlockedUsersTitle => 'Blocked Travelers';
+
+  @override
+  String get settingsBlockedUsersEmpty => 'You haven\'t blocked any users.';
+
+  @override
+  String get settingsAboutSection => 'About & Licenses';
+
+  @override
+  String get settingsOsmAttribution =>
+      'Map data © OpenStreetMap contributors under ODbL license.';
+
+  @override
+  String get accountSecurityTitle => 'Account & Security';
+
+  @override
+  String get accountSecurityEmailLabel => 'Registered Email';
+
+  @override
+  String get accountSecurityChangePasswordTitle => 'Update Password';
+
+  @override
+  String get accountSecurityNewPasswordLabel => 'New Password';
+
+  @override
+  String get accountSecurityConfirmPasswordLabel => 'Confirm New Password';
+
+  @override
+  String get accountSecurityUpdatePasswordButton => 'Update Password';
+
+  @override
+  String get accountSecurityPasswordUpdated =>
+      'Your password has been updated successfully.';
+
+  @override
+  String get accountSecurityDeleteTitle => 'Account & Data Deletion Request';
+
+  @override
+  String get accountSecurityDeleteSubtitle =>
+      'Closing your account permanently removes all your private visits, trip plans, and posts.';
+
+  @override
+  String get accountSecurityDeleteButton => 'Start Account Deletion';
+
+  @override
+  String get accountSecurityDeleteConfirmTitle =>
+      'Are You Sure You Want to Close Your Account?';
+
+  @override
+  String get accountSecurityDeleteConfirmMessage =>
+      'For security, your personal data will be cleared and you will be signed out. This action cannot be undone.';
+
+  @override
+  String get mapMyLocationTooltip => 'My Location';
+
+  @override
+  String get mapLocationPermissionDenied =>
+      'Location permission denied. You can grant location permission for Roamory in device settings.';
+
+  @override
+  String get mapLocationServiceDisabled =>
+      'Location service (GPS) is disabled or device location is currently unavailable.';
+
+  @override
+  String get visitAddUseCurrentLocation => 'Use My Current Location';
+
+  @override
+  String get itineraryAddDayButton => '+ Add Day';
+
+  @override
+  String get wishlistAddedToTripMessage =>
+      'Place added to the selected trip day.';
+
+  @override
+  String get errorDatabaseTablePermissionMessage =>
+      'You are signed in, but write permission (GRANT INSERT) for this table is not yet granted in the database.';
+
+  @override
+  String get checklistValidationTitleRequired =>
+      'Please enter a title for the checklist item.';
+
+  @override
+  String get checklistValidationInvalidCategory =>
+      'Checklist item category does not match the database check constraint; please update the category constraint or try another category.';
 }

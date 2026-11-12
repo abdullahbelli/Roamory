@@ -43,6 +43,8 @@
 	<string>Roamory profil ve seyahat fotoğrafları seçebilmeniz için fotoğraf galerinize erişim ister.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Roamory profil ve seyahat anısı çekebilmeniz için kameranıza erişim ister.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Roamory kişisel seyahat haritanızda mevcut konumunuzu göstermek ve yeni mekan koordinatı seçebilmeniz için konum izni ister.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -11,6 +11,9 @@ class UserProfileModel {
     this.fullName,
     this.avatarUrl,
     this.bio,
+    this.homeCity,
+    this.homeCountry,
+    this.isPublic = true,
     this.preferredLanguage = 'tr',
   });
 
@@ -22,6 +25,9 @@ class UserProfileModel {
       fullName: json['full_name'] as String?,
       avatarUrl: json['avatar_url'] as String?,
       bio: json['bio'] as String?,
+      homeCity: json['home_city'] as String?,
+      homeCountry: json['home_country'] as String?,
+      isPublic: (json['is_public'] as bool?) ?? true,
       preferredLanguage: (json['preferred_language'] as String?) ?? 'tr',
     );
   }
@@ -41,6 +47,15 @@ class UserProfileModel {
   /// Kısa gezgin biyografisi.
   final String? bio;
 
+  /// Yaşadığı şehir.
+  final String? homeCity;
+
+  /// Yaşadığı ülke.
+  final String? homeCountry;
+
+  /// Profilin herkese açık olup olmadığı.
+  final bool isPublic;
+
   /// Tercih edilen dil (`tr` / `en`).
   final String preferredLanguage;
 
@@ -52,12 +67,17 @@ class UserProfileModel {
       fullName: fullName,
       avatarUrl: avatarUrl,
       bio: bio,
+      homeCity: homeCity,
+      homeCountry: homeCountry,
+      isPublic: isPublic,
       preferredLanguage: preferredLanguage,
     );
   }
 
-  /// Supabase `upsert` işlemi için kolon haritası üretir.
+  /// Supabase `upsert` işlemi için canlı `public.profiles` tablosuyla uyumlu kolon haritası üretir.
   Map<String, dynamic> toUpsertJson() {
+    // Canlı veritabanı şemasında yalnızca id, username, full_name, avatar_url, bio ve
+    // preferred_language kolonları bulunduğu için yalnızca bu alanları gönderiyoruz.
     return {
       'id': id,
       'username': username,

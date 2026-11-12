@@ -13,6 +13,9 @@ class UserProfile {
     this.fullName,
     this.avatarUrl,
     this.bio,
+    this.homeCity,
+    this.homeCountry,
+    this.isPublic = true,
     this.preferredLanguage = 'tr',
   });
 
@@ -31,6 +34,15 @@ class UserProfile {
   /// İsteğe bağlı kısa gezgin biyografisi.
   final String? bio;
 
+  /// Kullanıcının yaşadığı şehir (`F02`).
+  final String? homeCity;
+
+  /// Kullanıcının yaşadığı ülke (`F02`).
+  final String? homeCountry;
+
+  /// Profilin diğer gezginlere açık olup olmadığı (`F02`, `F04`).
+  final bool isPublic;
+
   /// Kullanıcının tercih ettiği uygulama dili (`tr` veya `en`).
   final String preferredLanguage;
 
@@ -48,6 +60,9 @@ class UserProfile {
     String? fullName,
     String? avatarUrl,
     String? bio,
+    String? homeCity,
+    String? homeCountry,
+    bool? isPublic,
     String? preferredLanguage,
   }) {
     return UserProfile(
@@ -56,6 +71,9 @@ class UserProfile {
       fullName: fullName ?? this.fullName,
       avatarUrl: avatarUrl ?? this.avatarUrl,
       bio: bio ?? this.bio,
+      homeCity: homeCity ?? this.homeCity,
+      homeCountry: homeCountry ?? this.homeCountry,
+      isPublic: isPublic ?? this.isPublic,
       preferredLanguage: preferredLanguage ?? this.preferredLanguage,
     );
   }
@@ -70,9 +88,21 @@ class UserProfile {
           fullName == other.fullName &&
           avatarUrl == other.avatarUrl &&
           bio == other.bio &&
+          homeCity == other.homeCity &&
+          homeCountry == other.homeCountry &&
+          isPublic == other.isPublic &&
           preferredLanguage == other.preferredLanguage;
 
   @override
-  int get hashCode =>
-      Object.hash(id, username, fullName, avatarUrl, bio, preferredLanguage);
+  int get hashCode => Object.hash(
+    id,
+    username,
+    fullName,
+    avatarUrl,
+    bio,
+    homeCity,
+    homeCountry,
+    isPublic,
+    preferredLanguage,
+  );
 }

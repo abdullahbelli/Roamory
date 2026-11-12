@@ -14,10 +14,10 @@
 | Modül | Tablolar | Dikkat |
 |---|---|---|
 | Kullanıcı | `profiles` | `id` -> `auth.users`; username/full_name/avatar_url/bio/preferred_language; otomatik profil trigger'ı mevcut |
-| Keşif | `categories`, `places` | category slug/name_tr/name_en; place coords + country/city; is_published; `created_by` sonradan eklendi; sadece owner private veya published gösterimi |
+| Keşif | `categories`, `places` | category slug/name_tr/name_en; place coords + country/city; is_published; `created_by` sonradan eklendi; `authenticated` için `INSERT` yetkisi canlı DB'de verildi; sadece owner private veya published gösterimi |
 | Ziyaret | `visits`, `visit_photos`, `visit_categories` | user_id, place_id, visited_at, rating, visibility; photo storage_path; etiket ilişkisi; **visibility=public başkalarına otomatik görünür yapmaz** |
-| Wishlist | `wishlist_items` | unique `(user_id, place_id)` |
-| Seyahat | `trips`, `trip_days`, `trip_stops`, `trip_checklist_items` | owner, tarih, status; day_date trip tarihleriyle uyumlu; stop place_id; checklist categories |
+| Wishlist | `wishlist_items` | unique `(user_id, place_id)`; `"Add to own wishlist"` ve `"Update own wishlist"` politikaları owner özel mekanını destekler (canlı emülatörde 6/6 doğrulandı) |
+| Seyahat | `trips`, `trip_days`, `trip_stops`, `trip_checklist_items` | owner, tarih, status; day_date trip tarihleriyle uyumlu; stop place_id (`"Manage own trip stops"` owner özel mekanını destekleyecek şekilde güncellendi); checklist categories |
 | Sosyal | `posts`, `post_photos`, `post_likes`, `comments`, `follows`, `saved_posts` | draft/published; paylaşımlar günlükten bağımsız; engelleme politikaları güncellendi |
 | Güvenlik | `notifications`, `user_blocks`, `content_reports` | bildirimler client INSERT değildir; engellemede takip temizleme trigger'ı; moderation server-only olmalı |
 
@@ -34,7 +34,7 @@
 - `profiles` görünürlüğü block kontrolüyle sınırlandırıldı; profil alanları arasında hassas değerler eklenirse yeni politikaya ihtiyaç var.
 
 ## Mevcut tasarım/backend boşlukları (bloklayıcıları gizleme)
-1. Private `places` desteklendi ama `visits`, `wishlist_items`, `trip_stops` RLS ve place erişimi farklı olabilir. Özellikle wishlist/trip_stops `is_published=true` koşulunu kullanıyor: **özel mekanı plana/wishlist'e ekleyebilmek için güvenli ve onaylı migration gerekir**.
+1. Private `places` oluşturma (`GRANT INSERT` -> `authenticated`), `wishlist_items` (`"Add to own wishlist"`, `"Update own wishlist"`) ve `trip_stops` (`"Manage own trip stops"`) RLS politikaları kullanıcı tarafından canlı Supabase projesinde manuel olarak güncellendi ve `supabase/migrations/20260412000001_private_places_rls_proposal.sql` içinde belgelendi. Wishlist 6/6 cihazda doğrulandı; `trip_stops` özel mekan ekleme gerçek cihaz doğrulaması bekliyor. Canlı projede izinsiz otomatik migration çalıştırılmaz.
 2. `trips` şeması ortak gezi üyeliği/davet, rezervasyon, harcama alanlarını içermiyor; Stitch'teki bu öğeler mevcut özellik olarak gösterilemez.
 3. `posts` sadece draft/published; Stitch'teki takipçilere özel paylaşım için `visibility` ve buna bağlı RLS yok. UI gösteriyorsa onaylı migration veya sadeleştirme yapılmalı.
 4. `profiles` için tüm `authenticated` kullanıcılarına `SELECT` grant'i mevcut; block kuralı var; hassas veri barındırma. `avatar_url` private olmamalı.

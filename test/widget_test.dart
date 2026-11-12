@@ -132,12 +132,7 @@ void main() {
 
       await tester.tap(find.text('Keşfet'));
       await tester.pumpAndSettle();
-      expect(
-        find.text(
-          'Yeni destinasyonlar, kategoriler ve istek listeniz burada yer alacak.',
-        ),
-        findsOneWidget,
-      );
+      expect(find.text('Ülke, şehir veya mekan ara...'), findsOneWidget);
     },
   );
 

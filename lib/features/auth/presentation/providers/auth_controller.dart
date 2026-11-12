@@ -75,6 +75,11 @@ class AuthController extends Notifier<AuthSessionState> {
   StreamSubscription<AuthUser?>? _authSubscription;
   bool _manualMutationActive = false;
 
+  /// Kayıt veya doğrulanmamış giriş sonrasında A06 ekranında "Doğrulamayı Kontrol Et"
+  /// butonuna basıldığında oturum açabilmek için yalnızca bellekte tutulan geçici parola.
+  /// Güvenlik kuralı gereği diske veya loglara asla yazılmaz; doğrulama tamamlandığında silinir.
+  String? _pendingVerificationPassword;
+
   @override
   AuthSessionState build() {
     final repository = ref.watch(authRepositoryProvider);
@@ -113,6 +118,9 @@ class AuthController extends Notifier<AuthSessionState> {
   }
 
   /// E-posta ve şifreyle giriş yapar ve profil durumuna göre akışı günceller.
+  ///
+  /// Eğer hesap oluşturulmuş ancak e-posta doğrulaması henüz tamamlanmamışsa
+  /// (`email_not_confirmed`), kullanıcıyı doğrudan `A06` doğrulama ekranına yönlendirir.
   Future<void> signInWithEmail({
     required String email,
     required String password,
@@ -124,7 +132,18 @@ class AuthController extends Notifier<AuthSessionState> {
         email: email,
         password: password,
       );
+      _pendingVerificationPassword = null;
       state = await _buildStateForUser(user);
+    } catch (error) {
+      if (error is ValidationAppException &&
+          error.code == 'email_not_confirmed') {
+        _pendingVerificationPassword = password;
+        state = AuthSessionState(
+          status: AuthFlowStatus.needsEmailVerification,
+          pendingVerificationEmail: email.trim(),
+        );
+      }
+      rethrow;
     } finally {
       _manualMutationActive = false;
     }
@@ -137,12 +156,14 @@ class AuthController extends Notifier<AuthSessionState> {
       final repository = ref.read(authRepositoryProvider);
       final user = await repository.signUpWithEmail(request);
       if (user == null) {
+        _pendingVerificationPassword = request.password;
         state = AuthSessionState(
           status: AuthFlowStatus.needsEmailVerification,
           pendingVerificationEmail: request.email.trim(),
         );
         return AuthFlowStatus.needsEmailVerification;
       }
+      _pendingVerificationPassword = null;
       final resolved = await _buildStateForUser(user);
       state = resolved;
       return resolved.status;
@@ -163,7 +184,7 @@ class AuthController extends Notifier<AuthSessionState> {
     await repository.resendVerificationEmail(email: email);
   }
 
-  /// 6 haneli doğrulama kodunu kontrol eder ve oturumu sonraki adıma taşır.
+  /// 6-8 haneli doğrulama kodunu kontrol eder ve oturumu sonraki adıma taşır.
   Future<void> verifyEmailOtp({
     required String email,
     required String token,
@@ -172,6 +193,7 @@ class AuthController extends Notifier<AuthSessionState> {
     try {
       final repository = ref.read(authRepositoryProvider);
       final user = await repository.verifyEmailOtp(email: email, token: token);
+      _pendingVerificationPassword = null;
       state = await _buildStateForUser(user);
     } finally {
       _manualMutationActive = false;
@@ -179,14 +201,38 @@ class AuthController extends Notifier<AuthSessionState> {
   }
 
   /// Kullanıcının e-posta bağlantısına tıklayıp tıklamadığını sunucudan kontrol eder.
+  ///
+  /// Supabase `mailer_autoconfirm = false` iken kayıt sonrası yerel oturum (`session`)
+  /// açılmadığından, kullanıcı e-postasındaki doğrulama bağlantısını tarayıcıda onaylayıp
+  /// A06 ekranında "Doğrulamayı Kontrol Et" butonuna bastığında bellekteki geçici
+  /// kayıt bilgileriyle oturum açmayı dener; doğrulandıysa otomatik olarak `A07`
+  /// profil kurulum adımına geçirir.
   Future<bool> refreshVerificationStatus() async {
     _manualMutationActive = true;
     try {
       final repository = ref.read(authRepositoryProvider);
-      final user = await repository.refreshCurrentUser();
+      var user = await repository.refreshCurrentUser();
+
+      if ((user == null || !user.emailVerified) &&
+          state.pendingVerificationEmail != null &&
+          _pendingVerificationPassword != null) {
+        try {
+          user = await repository.signInWithEmail(
+            email: state.pendingVerificationEmail!,
+            password: _pendingVerificationPassword!,
+          );
+        } on AppException catch (e) {
+          if (e.code == 'email_not_confirmed') {
+            return false;
+          }
+          rethrow;
+        }
+      }
+
       if (user == null || !user.emailVerified) {
         return false;
       }
+      _pendingVerificationPassword = null;
       state = await _buildStateForUser(user);
       return true;
     } finally {
@@ -237,10 +283,26 @@ class AuthController extends Notifier<AuthSessionState> {
     }
   }
 
+  /// Profil düzenleme (`F02`) sonrasında oturumdaki profil bilgisini günceller.
+  void updateCurrentProfile(UserProfile updatedProfile) {
+    final user = state.user;
+    if (user == null) {
+      return;
+    }
+    state = AuthSessionState(
+      status: updatedProfile.isSetupComplete
+          ? AuthFlowStatus.authenticated
+          : AuthFlowStatus.needsProfileSetup,
+      user: user,
+      profile: updatedProfile,
+    );
+  }
+
   /// Mevcut kullanıcı oturumunu kapatır ve giriş akışına döndürür.
   Future<void> signOut() async {
     _manualMutationActive = true;
     try {
+      _pendingVerificationPassword = null;
       await ref.read(authRepositoryProvider).signOut();
       state = const AuthSessionState.unauthenticated();
     } finally {
@@ -250,6 +312,7 @@ class AuthController extends Notifier<AuthSessionState> {
 
   /// E-posta doğrulama ekranında adres değiştirmek için oturumsuz duruma döner.
   void resetPendingVerification() {
+    _pendingVerificationPassword = null;
     state = const AuthSessionState.unauthenticated();
   }
 

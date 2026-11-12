@@ -1117,6 +1117,1644 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Hesabınızdan çıkış yapmak istediğinize emin misiniz?'**
   String get authSignOutConfirmMessage;
+
+  /// No description provided for @commonAll.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümü'**
+  String get commonAll;
+
+  /// No description provided for @commonEdit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düzenle'**
+  String get commonEdit;
+
+  /// No description provided for @commonAdd.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ekle'**
+  String get commonAdd;
+
+  /// No description provided for @commonApply.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygula'**
+  String get commonApply;
+
+  /// No description provided for @commonReset.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sıfırla'**
+  String get commonReset;
+
+  /// No description provided for @commonSeeAll.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümünü Gör'**
+  String get commonSeeAll;
+
+  /// No description provided for @commonSearch.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ara'**
+  String get commonSearch;
+
+  /// No description provided for @commonShare.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paylaş'**
+  String get commonShare;
+
+  /// No description provided for @commonPrivateBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Özel Günlük'**
+  String get commonPrivateBadge;
+
+  /// No description provided for @commonPublicBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Herkese Açık'**
+  String get commonPublicBadge;
+
+  /// No description provided for @commonDraftBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Taslak'**
+  String get commonDraftBadge;
+
+  /// No description provided for @commonSavedSuccess.
+  ///
+  /// In tr, this message translates to:
+  /// **'Başarıyla kaydedildi.'**
+  String get commonSavedSuccess;
+
+  /// No description provided for @commonDeletedSuccess.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kayıt silindi.'**
+  String get commonDeletedSuccess;
+
+  /// No description provided for @commonOptional.
+  ///
+  /// In tr, this message translates to:
+  /// **'İsteğe Bağlı'**
+  String get commonOptional;
+
+  /// No description provided for @commonYes.
+  ///
+  /// In tr, this message translates to:
+  /// **'Evet'**
+  String get commonYes;
+
+  /// No description provided for @commonNo.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hayır'**
+  String get commonNo;
+
+  /// No description provided for @homeGreetingPrefix.
+  ///
+  /// In tr, this message translates to:
+  /// **'Merhaba,'**
+  String get homeGreetingPrefix;
+
+  /// No description provided for @homeGreetingSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün hangi rotayı keşfetmek veya kaydetmek istersin?'**
+  String get homeGreetingSubtitle;
+
+  /// No description provided for @homePassportBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'DİJİTAL PASAPORT ÖZETİ'**
+  String get homePassportBadge;
+
+  /// No description provided for @homePassportTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat İzin'**
+  String get homePassportTitle;
+
+  /// No description provided for @homePassportCountries.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ülke'**
+  String get homePassportCountries;
+
+  /// No description provided for @homePassportCities.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şehir'**
+  String get homePassportCities;
+
+  /// No description provided for @homePassportVisits.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret'**
+  String get homePassportVisits;
+
+  /// No description provided for @homePassportWishlist.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listesi'**
+  String get homePassportWishlist;
+
+  /// No description provided for @homeQuickAddVisit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Ekle'**
+  String get homeQuickAddVisit;
+
+  /// No description provided for @homeQuickPlanTrip.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rota Planla'**
+  String get homeQuickPlanTrip;
+
+  /// No description provided for @homeQuickMyJournal.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlüğüm'**
+  String get homeQuickMyJournal;
+
+  /// No description provided for @homeQuickWishlist.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydedilenler'**
+  String get homeQuickWishlist;
+
+  /// No description provided for @homeUpcomingTripTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yaklaşan Seyahat'**
+  String get homeUpcomingTripTitle;
+
+  /// No description provided for @homeUpcomingTripEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz planlanmış aktif bir seyahatin yok.'**
+  String get homeUpcomingTripEmpty;
+
+  /// No description provided for @homeFeaturedTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Öne Çıkan Rotalar'**
+  String get homeFeaturedTitle;
+
+  /// No description provided for @homeRecentMemoriesTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son Ziyaret Anıların'**
+  String get homeRecentMemoriesTitle;
+
+  /// No description provided for @homeRecentMemoriesEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz bir ziyaret kaydı eklemedin. İlk anını kaydet!'**
+  String get homeRecentMemoriesEmpty;
+
+  /// No description provided for @homeCommunityHighlightTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Topluluktan İlham Al'**
+  String get homeCommunityHighlightTitle;
+
+  /// No description provided for @homeCommunityHighlightEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplulukta henüz yayınlanmış gönderi yok.'**
+  String get homeCommunityHighlightEmpty;
+
+  /// No description provided for @exploreHeaderBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'ROAMORY REHBERİ'**
+  String get exploreHeaderBadge;
+
+  /// No description provided for @exploreSearchHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ülke, şehir veya mekan ara...'**
+  String get exploreSearchHint;
+
+  /// No description provided for @exploreFilterButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Filtrele'**
+  String get exploreFilterButton;
+
+  /// No description provided for @exploreWishlistButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listem'**
+  String get exploreWishlistButton;
+
+  /// No description provided for @exploreViewMap.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haritada Gör'**
+  String get exploreViewMap;
+
+  /// No description provided for @exploreViewList.
+  ///
+  /// In tr, this message translates to:
+  /// **'Liste Görünümü'**
+  String get exploreViewList;
+
+  /// No description provided for @exploreFeaturedBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'SEÇKİN ROTA'**
+  String get exploreFeaturedBadge;
+
+  /// No description provided for @exploreTrendingTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Keşfedilmeye Değer Mekanlar'**
+  String get exploreTrendingTitle;
+
+  /// No description provided for @exploreCuratedTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kategorilere Göre Öneriler'**
+  String get exploreCuratedTitle;
+
+  /// No description provided for @exploreEmptyTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz katalog mekanı bulunamadı'**
+  String get exploreEmptyTitle;
+
+  /// No description provided for @exploreEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Veritabanında yayınlanmış mekan kaydı yok veya arama kriterlerinize uygun sonuç bulunamadı. Kendi özel mekanınızı harita veya ziyaret ekranından ekleyebilirsiniz.'**
+  String get exploreEmptyMessage;
+
+  /// No description provided for @searchTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arama ve Filtreler'**
+  String get searchTitle;
+
+  /// No description provided for @searchCountryLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ülke'**
+  String get searchCountryLabel;
+
+  /// No description provided for @searchCountryHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örn: Türkiye, İtalya'**
+  String get searchCountryHint;
+
+  /// No description provided for @searchCityLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şehir'**
+  String get searchCityLabel;
+
+  /// No description provided for @searchCityHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örn: İzmir, Kyoto'**
+  String get searchCityHint;
+
+  /// No description provided for @searchCategoryLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kategori'**
+  String get searchCategoryLabel;
+
+  /// No description provided for @searchMinRatingLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Minimum Puan'**
+  String get searchMinRatingLabel;
+
+  /// No description provided for @searchSortLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sıralama'**
+  String get searchSortLabel;
+
+  /// No description provided for @searchSortNewest.
+  ///
+  /// In tr, this message translates to:
+  /// **'En Yeni'**
+  String get searchSortNewest;
+
+  /// No description provided for @searchSortAlphabetical.
+  ///
+  /// In tr, this message translates to:
+  /// **'İsme Göre (A-Z)'**
+  String get searchSortAlphabetical;
+
+  /// No description provided for @searchResultsCount.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} mekan bulundu'**
+  String searchResultsCount(int count);
+
+  /// No description provided for @searchClearFilters.
+  ///
+  /// In tr, this message translates to:
+  /// **'Filtreleri Temizle'**
+  String get searchClearFilters;
+
+  /// No description provided for @placeDetailsStoryTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekan Hikayesi'**
+  String get placeDetailsStoryTitle;
+
+  /// No description provided for @placeDetailsCoordinatesTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konum & Harita'**
+  String get placeDetailsCoordinatesTitle;
+
+  /// No description provided for @placeDetailsCommunityTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gezgin Paylaşımları'**
+  String get placeDetailsCommunityTitle;
+
+  /// No description provided for @placeDetailsCommunityEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu mekan için henüz topluluk gönderisi paylaşılmamış.'**
+  String get placeDetailsCommunityEmpty;
+
+  /// No description provided for @placeDetailsActionWishlistAdd.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listeme Ekle'**
+  String get placeDetailsActionWishlistAdd;
+
+  /// No description provided for @placeDetailsActionWishlistRemove.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listemde'**
+  String get placeDetailsActionWishlistRemove;
+
+  /// No description provided for @placeDetailsActionAddToTrip.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rotaya Ekle'**
+  String get placeDetailsActionAddToTrip;
+
+  /// No description provided for @placeDetailsActionMarkVisited.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gittim / Günlüğe Ekle'**
+  String get placeDetailsActionMarkVisited;
+
+  /// No description provided for @placeDetailsPrivateNotice.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu mekan kişisel haritanız için özel olarak oluşturuldu.'**
+  String get placeDetailsPrivateNotice;
+
+  /// No description provided for @wishlistTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listem'**
+  String get wishlistTitle;
+
+  /// No description provided for @wishlistSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} kaydedilen destinasyon'**
+  String wishlistSubtitle(int count);
+
+  /// No description provided for @wishlistEmptyTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek listen henüz boş'**
+  String get wishlistEmptyTitle;
+
+  /// No description provided for @wishlistEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Keşfet ekranından gitmek istediğin koyları, şehirleri ve kültür duraklarını buraya kaydedebilirsin.'**
+  String get wishlistEmptyMessage;
+
+  /// No description provided for @wishlistExploreCta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Keşfetmeye Başla'**
+  String get wishlistExploreCta;
+
+  /// No description provided for @wishlistNoteHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kısa not (örn: Baharda gidilecek)'**
+  String get wishlistNoteHint;
+
+  /// No description provided for @wishlistAddToTrip.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rotaya Dahil Et'**
+  String get wishlistAddToTrip;
+
+  /// No description provided for @wishlistRemoveConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listesinden Çıkar'**
+  String get wishlistRemoveConfirmTitle;
+
+  /// No description provided for @wishlistRemoveConfirmMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu mekanı istek listenizden kaldırmak istediğinize emin misiniz?'**
+  String get wishlistRemoveConfirmMessage;
+
+  /// No description provided for @mapAttribution.
+  ///
+  /// In tr, this message translates to:
+  /// **'© OpenStreetMap katkıda bulunanlar'**
+  String get mapAttribution;
+
+  /// No description provided for @mapStatsPill.
+  ///
+  /// In tr, this message translates to:
+  /// **'{visits} Ziyaret • {wishlist} İstek Listesi'**
+  String mapStatsPill(int visits, int wishlist);
+
+  /// No description provided for @mapFilterButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Harita Filtresi'**
+  String get mapFilterButton;
+
+  /// No description provided for @mapHistoryButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Geçmişi'**
+  String get mapHistoryButton;
+
+  /// No description provided for @mapAddVisitFab.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni Ziyaret Ekle'**
+  String get mapAddVisitFab;
+
+  /// No description provided for @mapLegendVisited.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Edildi'**
+  String get mapLegendVisited;
+
+  /// No description provided for @mapLegendWishlist.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listesi'**
+  String get mapLegendWishlist;
+
+  /// No description provided for @mapLegendCommunity.
+  ///
+  /// In tr, this message translates to:
+  /// **'Katalog'**
+  String get mapLegendCommunity;
+
+  /// No description provided for @mapEmptyOverlay.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haritada gösterilecek kayıt yok. İlk ziyaretini veya istek mekanını ekle!'**
+  String get mapEmptyOverlay;
+
+  /// No description provided for @mapFilterLayerTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gösterilecek Pinler'**
+  String get mapFilterLayerTitle;
+
+  /// No description provided for @mapFilterLayerAll.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümü'**
+  String get mapFilterLayerAll;
+
+  /// No description provided for @mapFilterLayerVisited.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaretlerim'**
+  String get mapFilterLayerVisited;
+
+  /// No description provided for @mapFilterLayerWishlist.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek Listem'**
+  String get mapFilterLayerWishlist;
+
+  /// No description provided for @mapFilterOnlyFavorites.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yalnızca 4+ Yıldızlı Favoriler'**
+  String get mapFilterOnlyFavorites;
+
+  /// No description provided for @mapFilterYearLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Yılı'**
+  String get mapFilterYearLabel;
+
+  /// No description provided for @visitsHistoryTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Geçmişim'**
+  String get visitsHistoryTitle;
+
+  /// No description provided for @visitsHistorySubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplam {count} kişisel seyahat kaydı'**
+  String visitsHistorySubtitle(int count);
+
+  /// No description provided for @visitsEmptyTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz ziyaret kaydın yok'**
+  String get visitsEmptyTitle;
+
+  /// No description provided for @visitsEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gittiğin yerleri, kişisel puanlarını ve fotoğraflarını özel saha günlüğüne kaydetmeye başla.'**
+  String get visitsEmptyMessage;
+
+  /// No description provided for @visitAddStep1Title.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Kaydı (Adım 1 / 2)'**
+  String get visitAddStep1Title;
+
+  /// No description provided for @visitAddSelectPlaceLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekan Seçin veya Yeni Ekleyin'**
+  String get visitAddSelectPlaceLabel;
+
+  /// No description provided for @visitAddCreateCustomPlace.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni Özel Mekan Oluştur'**
+  String get visitAddCreateCustomPlace;
+
+  /// No description provided for @visitAddPlaceNameLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekan Adı'**
+  String get visitAddPlaceNameLabel;
+
+  /// No description provided for @visitAddPlaceNameHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örn: Kabak Koyu Seyir Noktası'**
+  String get visitAddPlaceNameHint;
+
+  /// No description provided for @visitAddLatitudeLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Enlem (Latitude)'**
+  String get visitAddLatitudeLabel;
+
+  /// No description provided for @visitAddLongitudeLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Boylam (Longitude)'**
+  String get visitAddLongitudeLabel;
+
+  /// No description provided for @visitAddDateLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Tarihi'**
+  String get visitAddDateLabel;
+
+  /// No description provided for @visitAddTodayButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünü Seç'**
+  String get visitAddTodayButton;
+
+  /// No description provided for @visitAddRatingLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kişisel Puanın'**
+  String get visitAddRatingLabel;
+
+  /// No description provided for @visitAddCategoriesLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Deneyim Etiketleri'**
+  String get visitAddCategoriesLabel;
+
+  /// No description provided for @visitAddContinueToJournal.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük Detaylarına Devam Et'**
+  String get visitAddContinueToJournal;
+
+  /// No description provided for @visitJournalStep2Title.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gezi Günlüğü (Adım 2 / 2)'**
+  String get visitJournalStep2Title;
+
+  /// No description provided for @visitJournalTitleLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Anı Başlığı'**
+  String get visitJournalTitleLabel;
+
+  /// No description provided for @visitJournalTitleHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örn: Sisli sabaha karşı patika yürüyüşü'**
+  String get visitJournalTitleHint;
+
+  /// No description provided for @visitJournalNotesLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kişisel Günlük Notları'**
+  String get visitJournalNotesLabel;
+
+  /// No description provided for @visitJournalNotesHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'O günkü atmosferi, kokuları, yerel tatları ve unutmak istemediğin detayları yaz...'**
+  String get visitJournalNotesHint;
+
+  /// No description provided for @visitJournalPhotosLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Fotoğrafları (En fazla 10 MB)'**
+  String get visitJournalPhotosLabel;
+
+  /// No description provided for @visitJournalAddPhoto.
+  ///
+  /// In tr, this message translates to:
+  /// **'Fotoğraf Yükle'**
+  String get visitJournalAddPhoto;
+
+  /// No description provided for @visitJournalPrivacyBanner.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kişisel ziyaretlerin ve günlük notların varsayılan olarak özeldir; iznin olmadan toplulukta paylaşılmaz.'**
+  String get visitJournalPrivacyBanner;
+
+  /// No description provided for @visitDetailsTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Detayı'**
+  String get visitDetailsTitle;
+
+  /// No description provided for @visitDetailsDeleteConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret Kaydını Sil'**
+  String get visitDetailsDeleteConfirmTitle;
+
+  /// No description provided for @visitDetailsDeleteConfirmMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu ziyareti ve bağlı fotoğraflarını kalıcı olarak silmek istediğinize emin misiniz?'**
+  String get visitDetailsDeleteConfirmMessage;
+
+  /// No description provided for @visitDetailsConvertToPostTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu Anıyı Toplulukla Paylaş'**
+  String get visitDetailsConvertToPostTitle;
+
+  /// No description provided for @visitDetailsConvertToPostSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Özel günlük notların gizli kalır; seçtiğin özetle yeni bir topluluk gönderisi oluşturulur.'**
+  String get visitDetailsConvertToPostSubtitle;
+
+  /// No description provided for @visitDetailsConvertToPostButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gönderiye Dönüştür'**
+  String get visitDetailsConvertToPostButton;
+
+  /// No description provided for @visitDetailsPlanRouteButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rota Olarak Planla'**
+  String get visitDetailsPlanRouteButton;
+
+  /// No description provided for @visitValidationPlaceRequired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen bir mekan seçin veya yeni mekan adını ve koordinatlarını girin.'**
+  String get visitValidationPlaceRequired;
+
+  /// No description provided for @visitValidationCountryInvalid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen geçerli bir ülke adı veya 2 harfli ISO ülke kodu (örn: Türkiye, İtalya, TR, IT) girin.'**
+  String get visitValidationCountryInvalid;
+
+  /// No description provided for @visitValidationCityInvalid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen geçerli bir şehir veya bölge adı (en az 2 harf, rakamsız) girin.'**
+  String get visitValidationCityInvalid;
+
+  /// No description provided for @visitValidationCoordinateInvalid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geçerli bir enlem (-90..90) ve boylam (-180..180) değeri girin.'**
+  String get visitValidationCoordinateInvalid;
+
+  /// No description provided for @visitValidationRatingInvalid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Puan 1 ile 5 arasında olmalıdır.'**
+  String get visitValidationRatingInvalid;
+
+  /// No description provided for @visitPhotoSizeError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ziyaret fotoğrafı en fazla 10 MB olabilir.'**
+  String get visitPhotoSizeError;
+
+  /// No description provided for @tripsTabPlanned.
+  ///
+  /// In tr, this message translates to:
+  /// **'Planlanan'**
+  String get tripsTabPlanned;
+
+  /// No description provided for @tripsTabOngoing.
+  ///
+  /// In tr, this message translates to:
+  /// **'Devam Eden'**
+  String get tripsTabOngoing;
+
+  /// No description provided for @tripsTabCompleted.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tamamlanan'**
+  String get tripsTabCompleted;
+
+  /// No description provided for @tripsCreateButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni Seyahat Planla'**
+  String get tripsCreateButton;
+
+  /// No description provided for @tripsEmptyTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz bir seyahat planlamadın'**
+  String get tripsEmptyTitle;
+
+  /// No description provided for @tripsEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstek listendeki mekanları gün gün rotalara dönüştür, duraklarını sırala ve hazırlık kontrol listeni yönet.'**
+  String get tripsEmptyMessage;
+
+  /// No description provided for @tripCreateTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat Planı Oluştur'**
+  String get tripCreateTitle;
+
+  /// No description provided for @tripEditTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahati Düzenle'**
+  String get tripEditTitle;
+
+  /// No description provided for @tripEditPreserveDaysNotice.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut günleriniz, duraklarınız ve kontrol listeniz korunur; tarih aralığı değiştirildiğinde verileriniz silinmez.'**
+  String get tripEditPreserveDaysNotice;
+
+  /// No description provided for @tripTitleLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat Başlığı'**
+  String get tripTitleLabel;
+
+  /// No description provided for @tripTitleHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örn: Likya Yolu & Kaş Rotası'**
+  String get tripTitleHint;
+
+  /// No description provided for @tripCountryLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hedef Ülke'**
+  String get tripCountryLabel;
+
+  /// No description provided for @tripCityLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hedef Şehir / Bölge'**
+  String get tripCityLabel;
+
+  /// No description provided for @tripStartDateLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Başlangıç Tarihi'**
+  String get tripStartDateLabel;
+
+  /// No description provided for @tripEndDateLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bitiş Tarihi'**
+  String get tripEndDateLabel;
+
+  /// No description provided for @tripStatusLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Durum'**
+  String get tripStatusLabel;
+
+  /// No description provided for @tripDescriptionLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rota Notları'**
+  String get tripDescriptionLabel;
+
+  /// No description provided for @tripDescriptionHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu seyahatin genel amacı, ulaşım notları veya hatırlatmalar...'**
+  String get tripDescriptionHint;
+
+  /// No description provided for @tripValidationTitleRequired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen bir seyahat başlığı girin.'**
+  String get tripValidationTitleRequired;
+
+  /// No description provided for @tripValidationDateOrder.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bitiş tarihi başlangıç tarihinden önce olamaz.'**
+  String get tripValidationDateOrder;
+
+  /// No description provided for @tripDetailsDaysStat.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} Gün'**
+  String tripDetailsDaysStat(int count);
+
+  /// No description provided for @tripDetailsStopsStat.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} Durak'**
+  String tripDetailsStopsStat(int count);
+
+  /// No description provided for @tripDetailsChecklistStat.
+  ///
+  /// In tr, this message translates to:
+  /// **'{done}/{total} Hazırlık'**
+  String tripDetailsChecklistStat(int done, int total);
+
+  /// No description provided for @tripDetailsItineraryButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük Planı Düzenle'**
+  String get tripDetailsItineraryButton;
+
+  /// No description provided for @tripDetailsChecklistButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kontrol Listesi'**
+  String get tripDetailsChecklistButton;
+
+  /// No description provided for @tripDetailsDeleteConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat Planını Sil'**
+  String get tripDetailsDeleteConfirmTitle;
+
+  /// No description provided for @tripDetailsDeleteConfirmMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu seyahat planını, tüm günlerini, duraklarını ve kontrol listesini silmek istediğinize emin misiniz?'**
+  String get tripDetailsDeleteConfirmMessage;
+
+  /// No description provided for @itineraryTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük Rota Planlayıcı'**
+  String get itineraryTitle;
+
+  /// No description provided for @itineraryDayLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'{day}. Gün'**
+  String itineraryDayLabel(int day);
+
+  /// No description provided for @itineraryDayNotesHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünün teması veya önemli notu...'**
+  String get itineraryDayNotesHint;
+
+  /// No description provided for @itineraryAddStopButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni Durak Ekle'**
+  String get itineraryAddStopButton;
+
+  /// No description provided for @itineraryStopNoteHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Durak notu veya saat aralığı (örn: 10:00 - Kahvaltı)'**
+  String get itineraryStopNoteHint;
+
+  /// No description provided for @itineraryEmptyStops.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu güne henüz durak eklenmedi.'**
+  String get itineraryEmptyStops;
+
+  /// No description provided for @itineraryNoPlacesAvailable.
+  ///
+  /// In tr, this message translates to:
+  /// **'Durak olarak eklenecek mekan bulunamadı. Önce özel mekan veya ziyaret ekleyebilirsiniz.'**
+  String get itineraryNoPlacesAvailable;
+
+  /// No description provided for @itineraryAddPrivatePlaceAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Özel Mekan Ekle'**
+  String get itineraryAddPrivatePlaceAction;
+
+  /// No description provided for @checklistTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat Kontrol Listesi'**
+  String get checklistTitle;
+
+  /// No description provided for @checklistProgressTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hazırlık Durumu'**
+  String get checklistProgressTitle;
+
+  /// No description provided for @checklistFilterAll.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümü'**
+  String get checklistFilterAll;
+
+  /// No description provided for @checklistFilterPending.
+  ///
+  /// In tr, this message translates to:
+  /// **'Eksikler'**
+  String get checklistFilterPending;
+
+  /// No description provided for @checklistFilterCompleted.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tamamlananlar'**
+  String get checklistFilterCompleted;
+
+  /// No description provided for @checklistCategoryDocs.
+  ///
+  /// In tr, this message translates to:
+  /// **'Belgeler & Biletler'**
+  String get checklistCategoryDocs;
+
+  /// No description provided for @checklistCategoryGear.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafet & Ekipman'**
+  String get checklistCategoryGear;
+
+  /// No description provided for @checklistCategoryHotel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konaklama & Ulaşım'**
+  String get checklistCategoryHotel;
+
+  /// No description provided for @checklistCategoryGeneral.
+  ///
+  /// In tr, this message translates to:
+  /// **'Genel Hazırlık'**
+  String get checklistCategoryGeneral;
+
+  /// No description provided for @checklistAddItemHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni kontrol maddesi ekle...'**
+  String get checklistAddItemHint;
+
+  /// No description provided for @checklistEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu seyahat için henüz kontrol listesi maddesi eklenmedi.'**
+  String get checklistEmptyMessage;
+
+  /// No description provided for @communityFeedExploreTab.
+  ///
+  /// In tr, this message translates to:
+  /// **'Keşfet'**
+  String get communityFeedExploreTab;
+
+  /// No description provided for @communityFeedFollowingTab.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takip Edilenler'**
+  String get communityFeedFollowingTab;
+
+  /// No description provided for @communityCreatePostButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni Gönderi'**
+  String get communityCreatePostButton;
+
+  /// No description provided for @communityEmptyExplore.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz toplulukta yayınlanmış bir gönderi yok. İlk hikayeyi sen paylaş!'**
+  String get communityEmptyExplore;
+
+  /// No description provided for @communityEmptyFollowing.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takip ettiğin gezginlerin henüz paylaşımı yok veya henüz kimseyi takip etmiyorsun.'**
+  String get communityEmptyFollowing;
+
+  /// No description provided for @communityLikeAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Beğen'**
+  String get communityLikeAction;
+
+  /// No description provided for @communityCommentAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yorum'**
+  String get communityCommentAction;
+
+  /// No description provided for @communitySaveAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get communitySaveAction;
+
+  /// No description provided for @communityReportAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'İçeriği Bildir'**
+  String get communityReportAction;
+
+  /// No description provided for @communityBlockUserAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcıyı Engelle'**
+  String get communityBlockUserAction;
+
+  /// No description provided for @communityUnblockUserAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Engeli Kaldır'**
+  String get communityUnblockUserAction;
+
+  /// No description provided for @communityFollowAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takip Et'**
+  String get communityFollowAction;
+
+  /// No description provided for @communityFollowingAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takip Ediliyor'**
+  String get communityFollowingAction;
+
+  /// No description provided for @postCreateTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Topluluk Gönderisi Oluştur'**
+  String get postCreateTitle;
+
+  /// No description provided for @postCreateTitleLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gönderi Başlığı'**
+  String get postCreateTitleLabel;
+
+  /// No description provided for @postCreateTitleHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örn: Kapadokya\'da gün doğumu balonları'**
+  String get postCreateTitleHint;
+
+  /// No description provided for @postCreateCaptionLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hikayen & Tavsiyelerin'**
+  String get postCreateCaptionLabel;
+
+  /// No description provided for @postCreateCaptionHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Diğer gezginler için rota ipuçlarını ve deneyimini paylaş...'**
+  String get postCreateCaptionHint;
+
+  /// No description provided for @postCreateSelectPlaceLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'İlgili Mekan (İsteğe Bağlı)'**
+  String get postCreateSelectPlaceLabel;
+
+  /// No description provided for @postCreateLinkVisitLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlı Ziyaret Kaydı'**
+  String get postCreateLinkVisitLabel;
+
+  /// No description provided for @postCreateLinkTripLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlı Seyahat Planı'**
+  String get postCreateLinkTripLabel;
+
+  /// No description provided for @postCreatePrivacyNotice.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kişisel günlük notların gizli tutulur; yalnızca burada yazdığın metin ve seçtiğin fotoğraflar yayınlanır.'**
+  String get postCreatePrivacyNotice;
+
+  /// No description provided for @postCreateSaveDraft.
+  ///
+  /// In tr, this message translates to:
+  /// **'Taslak Kaydet'**
+  String get postCreateSaveDraft;
+
+  /// No description provided for @postCreatePublish.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hemen Yayınla'**
+  String get postCreatePublish;
+
+  /// No description provided for @postValidationCaptionRequired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen paylaşımınız için bir başlık veya açıklama yazın.'**
+  String get postValidationCaptionRequired;
+
+  /// No description provided for @postDetailsTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gönderi Detayı'**
+  String get postDetailsTitle;
+
+  /// No description provided for @postDetailsDeleteConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gönderiyi Sil'**
+  String get postDetailsDeleteConfirmTitle;
+
+  /// No description provided for @postDetailsDeleteConfirmMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu topluluk gönderisini silmek istediğinize emin misiniz?'**
+  String get postDetailsDeleteConfirmMessage;
+
+  /// No description provided for @commentsTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yorumlar'**
+  String get commentsTitle;
+
+  /// No description provided for @commentsEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz yorum yapılmamış. İlk yorumu sen yaz!'**
+  String get commentsEmptyMessage;
+
+  /// No description provided for @commentsInputHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Saygılı bir yorum ekle...'**
+  String get commentsInputHint;
+
+  /// No description provided for @commentsSendButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gönder'**
+  String get commentsSendButton;
+
+  /// No description provided for @commentsDeleteConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yorumu Sil'**
+  String get commentsDeleteConfirmTitle;
+
+  /// No description provided for @commentsDeleteConfirmMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yorumunuzu silmek istediğinize emin misiniz?'**
+  String get commentsDeleteConfirmMessage;
+
+  /// No description provided for @reportSheetTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'İçeriği veya Kullanıcıyı Bildir'**
+  String get reportSheetTitle;
+
+  /// No description provided for @reportReasonSpam.
+  ///
+  /// In tr, this message translates to:
+  /// **'Spam veya yanıltıcı içerik'**
+  String get reportReasonSpam;
+
+  /// No description provided for @reportReasonInappropriate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygunsuz veya rahatsız edici içerik'**
+  String get reportReasonInappropriate;
+
+  /// No description provided for @reportReasonHarassment.
+  ///
+  /// In tr, this message translates to:
+  /// **'Taciz veya topluluk kuralları ihlali'**
+  String get reportReasonHarassment;
+
+  /// No description provided for @reportDetailsHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ek açıklama (isteğe bağlı)'**
+  String get reportDetailsHint;
+
+  /// No description provided for @reportSubmittedMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bildiriminiz incelenmek üzere kaydedildi. Teşekkür ederiz.'**
+  String get reportSubmittedMessage;
+
+  /// No description provided for @blockConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gezgini Engelle'**
+  String get blockConfirmTitle;
+
+  /// No description provided for @blockConfirmMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu kullanıcıyı engellediğinizde birbirinizin gönderilerini ve profilini göremezsiniz, mevcut takip ilişkisi kaldırılır.'**
+  String get blockConfirmMessage;
+
+  /// No description provided for @blockSuccessMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı engellendi.'**
+  String get blockSuccessMessage;
+
+  /// No description provided for @travelerProfileTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gezgin Profili'**
+  String get travelerProfileTitle;
+
+  /// No description provided for @travelerPostsStat.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paylaşım'**
+  String get travelerPostsStat;
+
+  /// No description provided for @travelerFollowersStat.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takipçi'**
+  String get travelerFollowersStat;
+
+  /// No description provided for @travelerFollowingStat.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takip Edilen'**
+  String get travelerFollowingStat;
+
+  /// No description provided for @followersTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takipçiler'**
+  String get followersTitle;
+
+  /// No description provided for @followingTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takip Edilenler'**
+  String get followingTitle;
+
+  /// No description provided for @followersEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz takipçi bulunmuyor.'**
+  String get followersEmptyMessage;
+
+  /// No description provided for @followingEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz takip edilen gezgin bulunmuyor.'**
+  String get followingEmptyMessage;
+
+  /// No description provided for @myProfileTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profilim'**
+  String get myProfileTitle;
+
+  /// No description provided for @myProfileEditButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profili Düzenle'**
+  String get myProfileEditButton;
+
+  /// No description provided for @myProfileTabPosts.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gönderilerim'**
+  String get myProfileTabPosts;
+
+  /// No description provided for @myProfileTabJournal.
+  ///
+  /// In tr, this message translates to:
+  /// **'Özel Günlüğüm'**
+  String get myProfileTabJournal;
+
+  /// No description provided for @myProfileTabTrips.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rotalarım'**
+  String get myProfileTabTrips;
+
+  /// No description provided for @myProfileTabSaved.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydedilen Gönderiler'**
+  String get myProfileTabSaved;
+
+  /// No description provided for @myProfilePassportButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'İnteraktif Pasaport Haritam'**
+  String get myProfilePassportButton;
+
+  /// No description provided for @editProfileTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profili Düzenle'**
+  String get editProfileTitle;
+
+  /// No description provided for @editProfileHomeCityLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yaşadığın Şehir'**
+  String get editProfileHomeCityLabel;
+
+  /// No description provided for @editProfileHomeCountryLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yaşadığın Ülke'**
+  String get editProfileHomeCountryLabel;
+
+  /// No description provided for @editProfilePublicToggleTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Herkese Açık Gezgin Profili'**
+  String get editProfilePublicToggleTitle;
+
+  /// No description provided for @editProfilePublicToggleSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açık olduğunda diğer gezginler profilini ve yayınladığın gönderileri görebilir.'**
+  String get editProfilePublicToggleSubtitle;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bildirimler'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsMarkAllRead.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümünü Okundu Say'**
+  String get notificationsMarkAllRead;
+
+  /// No description provided for @notificationsFilterAll.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümü'**
+  String get notificationsFilterAll;
+
+  /// No description provided for @notificationsFilterFollows.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takipçiler'**
+  String get notificationsFilterFollows;
+
+  /// No description provided for @notificationsFilterInteractions.
+  ///
+  /// In tr, this message translates to:
+  /// **'Etkileşimler'**
+  String get notificationsFilterInteractions;
+
+  /// No description provided for @notificationsFilterSystem.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sistem'**
+  String get notificationsFilterSystem;
+
+  /// No description provided for @notificationsEmptyTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz bildirimin yok'**
+  String get notificationsEmptyTitle;
+
+  /// No description provided for @notificationsEmptyMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni takipçiler, beğeniler ve yorumlar geldiğinde burada listelenir.'**
+  String get notificationsEmptyMessage;
+
+  /// No description provided for @settingsAccountSection.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap ve Güvenlik'**
+  String get settingsAccountSection;
+
+  /// No description provided for @settingsPreferencesSection.
+  ///
+  /// In tr, this message translates to:
+  /// **'Görünüm ve Dil'**
+  String get settingsPreferencesSection;
+
+  /// No description provided for @settingsPrivacySection.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gizlilik ve Güvenlik'**
+  String get settingsPrivacySection;
+
+  /// No description provided for @settingsBlockedUsersTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Engellenen Gezginler'**
+  String get settingsBlockedUsersTitle;
+
+  /// No description provided for @settingsBlockedUsersEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Engellediğiniz bir kullanıcı bulunmuyor.'**
+  String get settingsBlockedUsersEmpty;
+
+  /// No description provided for @settingsAboutSection.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hakkında ve Lisanslar'**
+  String get settingsAboutSection;
+
+  /// No description provided for @settingsOsmAttribution.
+  ///
+  /// In tr, this message translates to:
+  /// **'Harita verileri © OpenStreetMap katkıda bulunanlar (ODbL) lisansı altındadır.'**
+  String get settingsOsmAttribution;
+
+  /// No description provided for @accountSecurityTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap ve Güvenlik'**
+  String get accountSecurityTitle;
+
+  /// No description provided for @accountSecurityEmailLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kayıtlı E-posta'**
+  String get accountSecurityEmailLabel;
+
+  /// No description provided for @accountSecurityChangePasswordTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifre Güncelle'**
+  String get accountSecurityChangePasswordTitle;
+
+  /// No description provided for @accountSecurityNewPasswordLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni Şifre'**
+  String get accountSecurityNewPasswordLabel;
+
+  /// No description provided for @accountSecurityConfirmPasswordLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni Şifre Tekrarı'**
+  String get accountSecurityConfirmPasswordLabel;
+
+  /// No description provided for @accountSecurityUpdatePasswordButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifreyi Güncelle'**
+  String get accountSecurityUpdatePasswordButton;
+
+  /// No description provided for @accountSecurityPasswordUpdated.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifreniz başarıyla güncellendi.'**
+  String get accountSecurityPasswordUpdated;
+
+  /// No description provided for @accountSecurityDeleteTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabı ve Verileri Silme Talebi'**
+  String get accountSecurityDeleteTitle;
+
+  /// No description provided for @accountSecurityDeleteSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınızı kapatmak tüm özel ziyaretlerinizi, seyahat planlarınızı ve paylaşımlarınızı geri alınamaz biçimde kaldırır.'**
+  String get accountSecurityDeleteSubtitle;
+
+  /// No description provided for @accountSecurityDeleteButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap Silme İşlemini Başlat'**
+  String get accountSecurityDeleteButton;
+
+  /// No description provided for @accountSecurityDeleteConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınızı Kapatmak İstediğinize Emin misiniz?'**
+  String get accountSecurityDeleteConfirmTitle;
+
+  /// No description provided for @accountSecurityDeleteConfirmMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güvenlik gereği kişisel verileriniz temizlenecek ve oturumunuz kapatılacaktır. Bu işlem geri alınamaz.'**
+  String get accountSecurityDeleteConfirmMessage;
+
+  /// No description provided for @mapMyLocationTooltip.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konumuma Git'**
+  String get mapMyLocationTooltip;
+
+  /// No description provided for @mapLocationPermissionDenied.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konum izni reddedildi. Cihaz ayarlarından Roamory için konum izni verebilirsiniz.'**
+  String get mapLocationPermissionDenied;
+
+  /// No description provided for @mapLocationServiceDisabled.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konum servisi (GPS) kapalı veya şu an cihaz konumu alınamadı.'**
+  String get mapLocationServiceDisabled;
+
+  /// No description provided for @visitAddUseCurrentLocation.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut Konumumu Kullan'**
+  String get visitAddUseCurrentLocation;
+
+  /// No description provided for @itineraryAddDayButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'+ Gün Ekle'**
+  String get itineraryAddDayButton;
+
+  /// No description provided for @wishlistAddedToTripMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekan seçili seyahat gününe eklendi.'**
+  String get wishlistAddedToTripMessage;
+
+  /// No description provided for @errorDatabaseTablePermissionMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Oturumunuz açık ancak veritabanında bu tablo için yazma yetkisi (GRANT INSERT) henüz tanımlanmamış.'**
+  String get errorDatabaseTablePermissionMessage;
+
+  /// No description provided for @checklistValidationTitleRequired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen hazırlık maddesi için bir başlık yazın.'**
+  String get checklistValidationTitleRequired;
+
+  /// No description provided for @checklistValidationInvalidCategory.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hazırlık maddesi kategorisi veritabanı kuralıyla eşleşmiyor; lütfen kategori kuralını güncelleyin veya farklı bir kategori deneyin.'**
+  String get checklistValidationInvalidCategory;
 }
 
 class _AppLocalizationsDelegate

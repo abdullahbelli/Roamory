@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:roamory/app/l10n/app_localizations.dart';
 import 'package:roamory/core/providers/app_preferences_provider.dart';
 import 'package:roamory/features/auth/domain/entities/auth_status.dart';
 import 'package:roamory/features/auth/presentation/providers/auth_controller.dart';
@@ -12,16 +11,35 @@ import 'package:roamory/features/auth/presentation/screens/onboarding_screen.dar
 import 'package:roamory/features/auth/presentation/screens/profile_setup_screen.dart';
 import 'package:roamory/features/auth/presentation/screens/register_screen.dart';
 import 'package:roamory/features/auth/presentation/screens/splash_screen.dart';
+import 'package:roamory/features/community/presentation/screens/comments_screen.dart';
+import 'package:roamory/features/community/presentation/screens/community_feed_screen.dart';
+import 'package:roamory/features/community/presentation/screens/create_post_screen.dart';
+import 'package:roamory/features/community/presentation/screens/post_details_screen.dart';
+import 'package:roamory/features/community/presentation/screens/traveler_profile_screen.dart';
+import 'package:roamory/features/explore/presentation/screens/explore_screen.dart';
+import 'package:roamory/features/explore/presentation/screens/place_details_screen.dart';
+import 'package:roamory/features/explore/presentation/screens/search_filter_screen.dart';
+import 'package:roamory/features/home/presentation/screens/home_screen.dart';
+import 'package:roamory/features/map/presentation/screens/my_map_screen.dart';
+import 'package:roamory/features/profile/presentation/screens/my_profile_screen.dart';
+import 'package:roamory/features/settings/presentation/screens/settings_and_security_screens.dart';
+import 'package:roamory/features/trips/presentation/screens/create_trip_screen.dart';
+import 'package:roamory/features/trips/presentation/screens/daily_itinerary_screen.dart';
+import 'package:roamory/features/trips/presentation/screens/my_trips_screen.dart';
+import 'package:roamory/features/trips/presentation/screens/trip_checklist_screen.dart';
+import 'package:roamory/features/trips/presentation/screens/trip_details_screen.dart';
+import 'package:roamory/features/visits/presentation/screens/add_visit_screen.dart';
+import 'package:roamory/features/visits/presentation/screens/visit_details_screen.dart';
+import 'package:roamory/features/visits/presentation/screens/visit_history_screen.dart';
+import 'package:roamory/features/wishlist/presentation/screens/wishlist_screen.dart';
 import 'package:roamory/shared/widgets/app_bottom_navigation.dart';
-import 'package:roamory/shared/widgets/app_buttons.dart';
-import 'package:roamory/shared/widgets/app_confirm_sheet.dart';
-import 'package:roamory/shared/widgets/app_state_views.dart';
 import 'package:roamory/shared/widgets/roamory_scaffold.dart';
 
-/// Uygulama genelindeki adlandırılmış rota yolları.
+/// Uygulama genelindeki adlandırılmış rota yolları (38 ekranın tamamı).
 ///
-/// Beş sabit ana sekme kabuk (shell) içinde yer alır; auth akışları ve
-/// `trips` / `settings` alt rotaları kabuk dışında tanımlanır.
+/// Beş sabit ana sekme (`home`, `explore`, `map`, `community`, `profile`) kabuk
+/// (shell) içinde yer alır; auth akışları, ziyaretler, seyahat planlama (`trips`),
+/// bildirimler ve ayarlar rotaları kabuk dışında tanımlanır.
 abstract final class AppRoutes {
   /// Açılış ekranı (`A01`).
   static const String splash = '/splash';
@@ -50,20 +68,83 @@ abstract final class AppRoutes {
   /// Keşfet sekmesi (`B02`).
   static const String explore = '/explore';
 
+  /// Arama ve Filtreler ekranı (`B03`).
+  static const String exploreSearch = '/explore/search';
+
+  /// Mekan Detayı rotası (`B04`).
+  static String placeDetailsPath(String placeId) => '/explore/places/$placeId';
+
+  /// İstek Listesi ekranı (`B05`).
+  static const String wishlist = '/wishlist';
+
   /// Haritam sekmesi (`C01`).
   static const String map = '/map';
+
+  /// Ziyaret Geçmişi ekranı (`C03`).
+  static const String visitsHistory = '/visits';
+
+  /// Ziyaret Ekleme (Adım 1/2) ekranı (`C04`).
+  static const String visitAdd = '/visits/add';
+
+  /// Gezi Günlüğü Düzenleyici (Adım 2/2) rotası (`C05`).
+  static String visitJournalPath(String visitId) => '/visits/$visitId/journal';
+
+  /// Ziyaret Detayı rotası (`C06`).
+  static String visitDetailsPath(String visitId) => '/visits/$visitId';
+
+  /// Seyahatlerim listesi (`D01`, 6. alt sekme değildir).
+  static const String trips = '/trips';
+
+  /// Yeni Seyahat Oluştur ekranı (`D02`).
+  static const String tripCreate = '/trips/create';
+
+  /// Seyahat Detayı rotası (`D03`).
+  static String tripDetailsPath(String tripId) => '/trips/$tripId';
+
+  /// Günlük Rota Planlayıcı rotası (`D04`).
+  static String tripItineraryPath(String tripId) => '/trips/$tripId/itinerary';
+
+  /// Seyahat Kontrol Listesi rotası (`D05`).
+  static String tripChecklistPath(String tripId) => '/trips/$tripId/checklist';
 
   /// Topluluk sekmesi (`E01`).
   static const String community = '/community';
 
-  /// Profil sekmesi (`F01`).
+  /// Yeni Gönderi Oluştur ekranı (`E02`).
+  static const String postCreate = '/community/create';
+
+  /// Gönderi Detayı rotası (`E03`).
+  static String postDetailsPath(String postId) => '/community/posts/$postId';
+
+  /// Gönderi Yorumları rotası (`E04`).
+  static String postCommentsPath(String postId) =>
+      '/community/posts/$postId/comments';
+
+  /// Gezgin Profili rotası (`E05`).
+  static String travelerProfilePath(String userId) =>
+      '/community/travelers/$userId';
+
+  /// Takipçiler / Takip Edilenler rotası (`E06`).
+  static String travelerConnectionsPath(
+    String userId, {
+    bool followers = true,
+  }) =>
+      '/community/travelers/$userId/connections?tab=${followers ? 'followers' : 'following'}';
+
+  /// Profilim sekmesi (`F01`).
   static const String profile = '/profile';
 
-  /// Seyahatlerim alt rotası (`D01`, alt çubuğun altıncı sekmesi değildir).
-  static const String trips = '/trips';
+  /// Profili Düzenle ekranı (`F02`).
+  static const String profileEdit = '/profile/edit';
 
-  /// Ayarlar alt rotası (`F04`).
+  /// Bildirimler ekranı (`F03`).
+  static const String notifications = '/notifications';
+
+  /// Ayarlar ekranı (`F04`).
   static const String settings = '/settings';
+
+  /// Hesap ve Güvenlik ekranı (`F05`).
+  static const String accountSecurity = '/settings/security';
 
   /// Giriş yapmamış kullanıcının serbestçe gezebileceği auth alt rotaları.
   static const Set<String> publicAuthRoutes = {login, register, forgotPassword};
@@ -81,9 +162,6 @@ abstract final class AppRoutes {
 }
 
 /// Oturum ve tercih durumuna göre hedef yönlendirme rotasını hesaplar.
-///
-/// Saf fonksiyon olarak tutulduğu için hem [GoRouter.redirect] içinde hem de
-/// birim testlerinde doğrudan doğrulanabilir.
 String? resolveAuthRedirect({
   required String currentLocation,
   required AuthSessionState authState,
@@ -110,7 +188,6 @@ String? resolveAuthRedirect({
           : AppRoutes.emailVerification;
 
     case AuthFlowStatus.needsProfileSetup:
-      // Profil kurulumu tamamlanmadan ana uygulamanın hiçbir rotasına izin verilmez.
       return currentLocation == AppRoutes.profileSetup
           ? null
           : AppRoutes.profileSetup;
@@ -188,7 +265,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.profileSetup,
         builder: (context, state) => const ProfileSetupScreen(),
       ),
-      // Sabit 5 ana sekme için durumunu koruyan kabuk yönlendirme yapısı.
+
+      // Sabit 5 ana sekme (`B01`, `B02`, `C01`, `E01`, `F01`).
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return _RoamoryMainShell(navigationShell: navigationShell);
@@ -198,14 +276,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: AppRoutes.home,
-                builder: (context, state) {
-                  final l10n = AppLocalizations.of(context);
-                  return _PlaceholderTabScreen(
-                    title: l10n.navHome,
-                    subtitle: l10n.homeComingSoonSubtitle,
-                    icon: Icons.explore_outlined,
-                  );
-                },
+                builder: (context, state) => const HomeScreen(),
               ),
             ],
           ),
@@ -213,14 +284,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: AppRoutes.explore,
-                builder: (context, state) {
-                  final l10n = AppLocalizations.of(context);
-                  return _PlaceholderTabScreen(
-                    title: l10n.navExplore,
-                    subtitle: l10n.exploreComingSoonSubtitle,
-                    icon: Icons.travel_explore_outlined,
-                  );
-                },
+                builder: (context, state) => const ExploreScreen(),
               ),
             ],
           ),
@@ -228,14 +292,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: AppRoutes.map,
-                builder: (context, state) {
-                  final l10n = AppLocalizations.of(context);
-                  return _PlaceholderTabScreen(
-                    title: l10n.navMap,
-                    subtitle: l10n.mapComingSoonSubtitle,
-                    icon: Icons.location_on_outlined,
-                  );
-                },
+                builder: (context, state) => const MyMapScreen(),
               ),
             ],
           ),
@@ -243,14 +300,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: AppRoutes.community,
-                builder: (context, state) {
-                  final l10n = AppLocalizations.of(context);
-                  return _PlaceholderTabScreen(
-                    title: l10n.navCommunity,
-                    subtitle: l10n.communityComingSoonSubtitle,
-                    icon: Icons.groups_outlined,
-                  );
-                },
+                builder: (context, state) => const CommunityFeedScreen(),
               ),
             ],
           ),
@@ -258,39 +308,128 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: AppRoutes.profile,
-                builder: (context, state) => const _ProfileShellPlaceholder(),
+                builder: (context, state) => const MyProfileScreen(),
               ),
             ],
           ),
         ],
       ),
+
+      // B03, B04, B05 — Keşif ve İstek Listesi Alt Rotaları.
+      GoRoute(
+        path: AppRoutes.exploreSearch,
+        builder: (context, state) => const SearchFilterScreen(),
+      ),
+      GoRoute(
+        path: '/explore/places/:placeId',
+        builder: (context, state) =>
+            PlaceDetailsScreen(placeId: state.pathParameters['placeId'] ?? ''),
+      ),
+      GoRoute(
+        path: AppRoutes.wishlist,
+        builder: (context, state) => const WishlistScreen(),
+      ),
+
+      // C03, C04, C05, C06 — Ziyaret ve Gezi Günlüğü Alt Rotaları.
+      GoRoute(
+        path: AppRoutes.visitsHistory,
+        builder: (context, state) => const VisitHistoryScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.visitAdd,
+        builder: (context, state) => AddVisitAndJournalScreen(
+          initialPlaceId: state.uri.queryParameters['placeId'],
+          initialStep: 1,
+        ),
+      ),
+      GoRoute(
+        path: '/visits/:visitId/journal',
+        builder: (context, state) => AddVisitAndJournalScreen(
+          editingVisitId: state.pathParameters['visitId'],
+          initialStep: 2,
+        ),
+      ),
+      GoRoute(
+        path: '/visits/:visitId',
+        builder: (context, state) =>
+            VisitDetailsScreen(visitId: state.pathParameters['visitId'] ?? ''),
+      ),
+
+      // D01, D02, D03, D04, D05 — Seyahat Planlama Alt Rotaları.
       GoRoute(
         path: AppRoutes.trips,
-        builder: (context, state) {
-          final l10n = AppLocalizations.of(context);
-          return RoamoryScaffold(
-            appBar: AppBar(title: Text(l10n.tripsTitle)),
-            body: EmptyState(
-              icon: Icons.luggage_outlined,
-              title: l10n.tripsTitle,
-              message: l10n.emptyDefaultMessage,
-            ),
-          );
-        },
+        builder: (context, state) => const MyTripsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.tripCreate,
+        builder: (context, state) => CreateTripScreen(
+          editingTripId: state.uri.queryParameters['tripId'],
+        ),
+      ),
+      GoRoute(
+        path: '/trips/:tripId',
+        builder: (context, state) =>
+            TripDetailsScreen(tripId: state.pathParameters['tripId'] ?? ''),
+      ),
+      GoRoute(
+        path: '/trips/:tripId/itinerary',
+        builder: (context, state) =>
+            DailyItineraryScreen(tripId: state.pathParameters['tripId'] ?? ''),
+      ),
+      GoRoute(
+        path: '/trips/:tripId/checklist',
+        builder: (context, state) =>
+            TripChecklistScreen(tripId: state.pathParameters['tripId'] ?? ''),
+      ),
+
+      // E02, E03, E04, E05, E06 — Topluluk ve Sosyal Alt Rotaları.
+      GoRoute(
+        path: AppRoutes.postCreate,
+        builder: (context, state) => CreatePostScreen(
+          initialVisitId: state.uri.queryParameters['visitId'],
+          initialPlaceId: state.uri.queryParameters['placeId'],
+          initialTripId: state.uri.queryParameters['tripId'],
+        ),
+      ),
+      GoRoute(
+        path: '/community/posts/:postId',
+        builder: (context, state) =>
+            PostDetailsScreen(postId: state.pathParameters['postId'] ?? ''),
+      ),
+      GoRoute(
+        path: '/community/posts/:postId/comments',
+        builder: (context, state) =>
+            CommentsScreen(postId: state.pathParameters['postId'] ?? ''),
+      ),
+      GoRoute(
+        path: '/community/travelers/:userId',
+        builder: (context, state) =>
+            TravelerProfileScreen(userId: state.pathParameters['userId'] ?? ''),
+      ),
+      GoRoute(
+        path: '/community/travelers/:userId/connections',
+        builder: (context, state) => FollowersFollowingScreen(
+          userId: state.pathParameters['userId'] ?? '',
+          initialShowFollowers: state.uri.queryParameters['tab'] != 'following',
+        ),
+      ),
+
+      // F02, F03, F04, F05 — Profil Düzenleme, Bildirimler ve Ayarlar Rotaları.
+      GoRoute(
+        path: AppRoutes.profileEdit,
+        builder: (context, state) => const EditProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.notifications,
+        builder: (context, state) => const NotificationsScreen(),
       ),
       GoRoute(
         path: AppRoutes.settings,
-        builder: (context, state) {
-          final l10n = AppLocalizations.of(context);
-          return RoamoryScaffold(
-            appBar: AppBar(title: Text(l10n.settingsTitle)),
-            body: EmptyState(
-              icon: Icons.settings_outlined,
-              title: l10n.settingsTitle,
-              message: l10n.emptyDefaultMessage,
-            ),
-          );
-        },
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.accountSecurity,
+        builder: (context, state) => const AccountSecurityScreen(),
       ),
     ],
   );
@@ -309,83 +448,11 @@ class _RoamoryMainShell extends StatelessWidget {
       bottomNavigationBar: AppBottomNavigation(
         currentIndex: navigationShell.currentIndex,
         onDestinationSelected: (index) {
-          // Aynı sekmeye tekrar dokunulduğunda o dalın kök rotasına dönüyoruz.
           navigationShell.goBranch(
             index,
             initialLocation: index == navigationShell.currentIndex,
           );
         },
-      ),
-    );
-  }
-}
-
-class _PlaceholderTabScreen extends StatelessWidget {
-  const _PlaceholderTabScreen({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-  });
-
-  final String title;
-  final String subtitle;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      bottom: false,
-      child: EmptyState(icon: icon, title: title, message: subtitle),
-    );
-  }
-}
-
-/// Profil sekmesi (`F01` P5'te kodlanana kadar) için gerçek çıkış aksiyonu sunar.
-class _ProfileShellPlaceholder extends ConsumerWidget {
-  const _ProfileShellPlaceholder();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context);
-    final session = ref.watch(authControllerProvider);
-    final action = ref.watch(authActionProvider);
-
-    return SafeArea(
-      bottom: false,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 96),
-        child: Column(
-          children: [
-            Expanded(
-              child: EmptyState(
-                icon: Icons.menu_book_outlined,
-                title: session.profile?.fullName ?? l10n.navProfile,
-                message: session.profile?.username != null
-                    ? '@${session.profile!.username}'
-                    : l10n.profileComingSoonSubtitle,
-              ),
-            ),
-            SecondaryButton(
-              label: l10n.authSignOut,
-              outlined: true,
-              icon: Icons.logout_rounded,
-              onPressed: action.isLoading
-                  ? null
-                  : () async {
-                      final ok = await showAppConfirmSheet(
-                        context: context,
-                        title: l10n.authSignOutConfirmTitle,
-                        message: l10n.authSignOutConfirmMessage,
-                        confirmLabel: l10n.authSignOut,
-                        isDestructive: true,
-                      );
-                      if (ok) {
-                        await ref.read(authActionProvider.notifier).signOut();
-                      }
-                    },
-            ),
-          ],
-        ),
       ),
     );
   }
